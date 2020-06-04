@@ -1,0 +1,8 @@
+python-decouple
+<<<<<<< HEAD
+requests
+pytest
+selenium
+=======
+requests
+>>>>>>> 94c78d6582160763d0980217f4be5684998becdf
