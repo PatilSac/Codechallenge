@@ -1,0 +1,5 @@
+2020-06-04 20:51:17,356 - test_env_key - 50 - DEBUG - Harmless debug Message
+2020-06-04 20:51:17,356 - test_env_key - 51 - INFO - Just an information
+2020-06-04 20:51:17,356 - test_env_key - 52 - WARNING - Its a Warning
+2020-06-04 20:51:17,356 - test_env_key - 53 - ERROR - Did you try to divide by zero
+2020-06-04 20:51:17,356 - test_env_key - 54 - CRITICAL - Internet is down
