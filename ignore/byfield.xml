@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GoodreadsResponse>
+  <Request>
+    <authentication>true</authentication>
+      <key><![CDATA[NT02qJcjLCaq2GgotBcIQ]]></key>
+    <method><![CDATA[search_index]]></method>
+  </Request>
+  <search>
+  <query><![CDATA[Rich]]></query>
+    <results-start>1</results-start>
+    <results-end>20</results-end>
+    <total-results>54377</total-results>
+    <source>Goodreads</source>
+    <query-time-seconds>0.08</query-time-seconds>
+    <results>
+        <work>
+  <id type="integer">3366043</id>
+  <books_count type="integer">266</books_count>
+  <ratings_count type="integer">335792</ratings_count>
+  <text_reviews_count type="integer">12865</text_reviews_count>
+  <original_publication_year type="integer">1997</original_publication_year>
+  <original_publication_month type="integer" nil="true"/>
+  <original_publication_day type="integer" nil="true"/>
+  <average_rating>4.07</average_rating>
+  <best_book type="Book">
+    <id type="integer">69571</id>
+    <title>Rich Dad, Poor Dad</title>
+    <author>
+      <id type="integer">600</id>
+      <name>Robert T. Kiyosaki</name>
+    </author>
+    <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+    <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">21571970</id>
+  <books_count type="integer">107</books_count>
+  <ratings_count type="integer">308392</ratings_count>
+  <text_reviews_count type="integer">28479</text_reviews_count>
+  <original_publication_year type="integer">2013</original_publication_year>
+  <original_publication_month type="integer">6</original_publication_month>
+  <original_publication_day type="integer">11</original_publication_day>
+  <average_rating>3.85</average_rating>
+  <best_book type="Book">
+    <id type="integer">16085481</id>
+    <title>Crazy Rich Asians (Crazy Rich Asians, #1)</title>
+    <author>
+      <id type="integer">634694</id>
+      <name>Kevin Kwan</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1364852559l/16085481._SX98_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1364852559l/16085481._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">1199320</id>
+  <books_count type="integer">1053</books_count>
+  <ratings_count type="integer">198421</ratings_count>
+  <text_reviews_count type="integer">6199</text_reviews_count>
+  <original_publication_year type="integer">1937</original_publication_year>
+  <original_publication_month type="integer" nil="true"/>
+  <original_publication_day type="integer" nil="true"/>
+  <average_rating>4.18</average_rating>
+  <best_book type="Book">
+    <id type="integer">30186948</id>
+    <title>Think and Grow Rich</title>
+    <author>
+      <id type="integer">399</id>
+      <name>Napoleon Hill</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1463241782l/30186948._SX98_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1463241782l/30186948._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">42179165</id>
+  <books_count type="integer">56</books_count>
+  <ratings_count type="integer">136680</ratings_count>
+  <text_reviews_count type="integer">10202</text_reviews_count>
+  <original_publication_year type="integer">2015</original_publication_year>
+  <original_publication_month type="integer">6</original_publication_month>
+  <original_publication_day type="integer">16</original_publication_day>
+  <average_rating>3.83</average_rating>
+  <best_book type="Book">
+    <id type="integer">22674105</id>
+    <title>China Rich Girlfriend (Crazy Rich Asians, #2)</title>
+    <author>
+      <id type="integer">634694</id>
+      <name>Kevin Kwan</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1419179404l/22674105._SX98_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1419179404l/22674105._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">50231439</id>
+  <books_count type="integer">36</books_count>
+  <ratings_count type="integer">107471</ratings_count>
+  <text_reviews_count type="integer">7737</text_reviews_count>
+  <original_publication_year type="integer">2017</original_publication_year>
+  <original_publication_month type="integer">5</original_publication_month>
+  <original_publication_day type="integer">23</original_publication_day>
+  <average_rating>3.94</average_rating>
+  <best_book type="Book">
+    <id type="integer">29864343</id>
+    <title>Rich People Problems (Crazy Rich Asians, #3)</title>
+    <author>
+      <id type="integer">634694</id>
+      <name>Kevin Kwan</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1493727003l/29864343._SX98_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1493727003l/29864343._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">42235</id>
+  <books_count type="integer">113</books_count>
+  <ratings_count type="integer">38565</ratings_count>
+  <text_reviews_count type="integer">1167</text_reviews_count>
+  <original_publication_year type="integer">1998</original_publication_year>
+  <original_publication_month type="integer" nil="true"/>
+  <original_publication_day type="integer" nil="true"/>
+  <average_rating>4.12</average_rating>
+  <best_book type="Book">
+    <id type="integer">81922</id>
+    <title>Rich Dad's Cashflow Quadrant: Rich Dad's Guide to Financial Freedom</title>
+    <author>
+      <id type="integer">600</id>
+      <name>Robert T. Kiyosaki</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1483023081l/81922._SX98_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1483023081l/81922._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">332860</id>
+  <books_count type="integer">725</books_count>
+  <ratings_count type="integer">30251</ratings_count>
+  <text_reviews_count type="integer">921</text_reviews_count>
+  <original_publication_year type="integer">1910</original_publication_year>
+  <original_publication_month type="integer" nil="true"/>
+  <original_publication_day type="integer" nil="true"/>
+  <average_rating>4.18</average_rating>
+  <best_book type="Book">
+    <id type="integer">342504</id>
+    <title>The Science of Getting Rich</title>
+    <author>
+      <id type="integer">65913</id>
+      <name>Wallace D. Wattles</name>
+    </author>
+    <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+    <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">4990463</id>
+  <books_count type="integer">10</books_count>
+  <ratings_count type="integer">22544</ratings_count>
+  <text_reviews_count type="integer">1852</text_reviews_count>
+  <original_publication_year type="integer">2009</original_publication_year>
+  <original_publication_month type="integer">1</original_publication_month>
+  <original_publication_day type="integer">1</original_publication_day>
+  <average_rating>4.10</average_rating>
+  <best_book type="Book">
+    <id type="integer">4924862</id>
+    <title>I Will Teach You to Be Rich</title>
+    <author>
+      <id type="integer">773057</id>
+      <name>Ramit Sethi</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1404581320l/4924862._SX98_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1404581320l/4924862._SX50_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">21541860</id>
+  <books_count type="integer">52</books_count>
+  <ratings_count type="integer">17829</ratings_count>
+  <text_reviews_count type="integer">2292</text_reviews_count>
+  <original_publication_year type="integer">2013</original_publication_year>
+  <original_publication_month type="integer">3</original_publication_month>
+  <original_publication_day type="integer">1</original_publication_day>
+  <average_rating>3.80</average_rating>
+  <best_book type="Book">
+    <id type="integer">15815364</id>
+    <title>How to Get Filthy Rich in Rising Asia</title>
+    <author>
+      <id type="integer">16902</id>
+      <name>Mohsin Hamid</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1353428459l/15815364._SX98_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1353428459l/15815364._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">503099</id>
+  <books_count type="integer">65</books_count>
+  <ratings_count type="integer">32831</ratings_count>
+  <text_reviews_count type="integer">353</text_reviews_count>
+  <original_publication_year type="integer">1969</original_publication_year>
+  <original_publication_month type="integer" nil="true"/>
+  <original_publication_day type="integer" nil="true"/>
+  <average_rating>4.17</average_rating>
+  <best_book type="Book">
+    <id type="integer">315519</id>
+    <title>Rich Man, Poor Man</title>
+    <author>
+      <id type="integer">7735</id>
+      <name>Irwin Shaw</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1353725186l/315519._SY160_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1353725186l/315519._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">69008734</id>
+  <books_count type="integer">3</books_count>
+  <ratings_count type="integer">9634</ratings_count>
+  <text_reviews_count type="integer">977</text_reviews_count>
+  <original_publication_year type="integer">2019</original_publication_year>
+  <original_publication_month type="integer">3</original_publication_month>
+  <original_publication_day type="integer">27</original_publication_day>
+  <average_rating>4.12</average_rating>
+  <best_book type="Book">
+    <id type="integer">44649884</id>
+    <title>Filthy Rich Boys (Rich Boys of Burberry Prep, #1)</title>
+    <author>
+      <id type="integer">6432984</id>
+      <name>C.M. Stunich</name>
+    </author>
+    <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+    <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">5265</id>
+  <books_count type="integer">338</books_count>
+  <ratings_count type="integer">99668</ratings_count>
+  <text_reviews_count type="integer">5379</text_reviews_count>
+  <original_publication_year type="integer">1926</original_publication_year>
+  <original_publication_month type="integer" nil="true"/>
+  <original_publication_day type="integer" nil="true"/>
+  <average_rating>4.26</average_rating>
+  <best_book type="Book">
+    <id type="integer">1052</id>
+    <title>The Richest Man in Babylon</title>
+    <author>
+      <id type="integer">688</id>
+      <name>George S. Clason</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348336780l/1052._SY160_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348336780l/1052._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">52779695</id>
+  <books_count type="integer">13</books_count>
+  <ratings_count type="integer">12681</ratings_count>
+  <text_reviews_count type="integer">1530</text_reviews_count>
+  <original_publication_year type="integer">2017</original_publication_year>
+  <original_publication_month type="integer">3</original_publication_month>
+  <original_publication_day type="integer">27</original_publication_day>
+  <average_rating>4.12</average_rating>
+  <best_book type="Book">
+    <id type="integer">32145091</id>
+    <title>Dirty Filthy Rich Men (Dirty Duet, #1)</title>
+    <author>
+      <id type="integer">7056140</id>
+      <name>Laurelin Paige</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1486953846l/32145091._SX98_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1486953846l/32145091._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">806311</id>
+  <books_count type="integer">35</books_count>
+  <ratings_count type="integer">14996</ratings_count>
+  <text_reviews_count type="integer">770</text_reviews_count>
+  <original_publication_year type="integer">2003</original_publication_year>
+  <original_publication_month type="integer">12</original_publication_month>
+  <original_publication_day type="integer">12</original_publication_day>
+  <average_rating>3.93</average_rating>
+  <best_book type="Book">
+    <id type="integer">621</id>
+    <title>The Automatic Millionaire: A Powerful One-Step Plan to Live and Finish Rich</title>
+    <author>
+      <id type="integer">398</id>
+      <name>David Bach</name>
+    </author>
+    <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+    <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">46817110</id>
+  <books_count type="integer">13</books_count>
+  <ratings_count type="integer">8730</ratings_count>
+  <text_reviews_count type="integer">1014</text_reviews_count>
+  <original_publication_year type="integer">2016</original_publication_year>
+  <original_publication_month type="integer">6</original_publication_month>
+  <original_publication_day type="integer">7</original_publication_day>
+  <average_rating>2.76</average_rating>
+  <best_book type="Book">
+    <id type="integer">26890725</id>
+    <title>Rich and Pretty</title>
+    <author>
+      <id type="integer">4425884</id>
+      <name>Rumaan Alam</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1445604790l/26890725._SX98_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1445604790l/26890725._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">3101473</id>
+  <books_count type="integer">57</books_count>
+  <ratings_count type="integer">15294</ratings_count>
+  <text_reviews_count type="integer">584</text_reviews_count>
+  <original_publication_year type="integer">1981</original_publication_year>
+  <original_publication_month type="integer">1</original_publication_month>
+  <original_publication_day type="integer">1</original_publication_day>
+  <average_rating>3.91</average_rating>
+  <best_book type="Book">
+    <id type="integer">85391</id>
+    <title>Rabbit Is Rich (Rabbit Angstrom, #3)</title>
+    <author>
+      <id type="integer">6878</id>
+      <name>John Updike</name>
+    </author>
+    <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+    <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">1055295</id>
+  <books_count type="integer">79</books_count>
+  <ratings_count type="integer">12630</ratings_count>
+  <text_reviews_count type="integer">375</text_reviews_count>
+  <original_publication_year type="integer">2000</original_publication_year>
+  <original_publication_month type="integer" nil="true"/>
+  <original_publication_day type="integer" nil="true"/>
+  <average_rating>4.01</average_rating>
+  <best_book type="Book">
+    <id type="integer">142108</id>
+    <title>Rich Dad's Guide to Investing: What the Rich Invest in That the Poor and Middle Class Do Not!</title>
+    <author>
+      <id type="integer">600</id>
+      <name>Robert T. Kiyosaki</name>
+    </author>
+    <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+    <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">51187846</id>
+  <books_count type="integer">5</books_count>
+  <ratings_count type="integer">7105</ratings_count>
+  <text_reviews_count type="integer">662</text_reviews_count>
+  <original_publication_year type="integer">2016</original_publication_year>
+  <original_publication_month type="integer">6</original_publication_month>
+  <original_publication_day type="integer">17</original_publication_day>
+  <average_rating>4.48</average_rating>
+  <best_book type="Book">
+    <id type="integer">30646587</id>
+    <title>The Simple Path to Wealth: Your road map to financial independence and a rich, free life</title>
+    <author>
+      <id type="integer">2936728</id>
+      <name>J.L. Collins</name>
+    </author>
+    <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+    <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">2866469</id>
+  <books_count type="integer">50</books_count>
+  <ratings_count type="integer">13226</ratings_count>
+  <text_reviews_count type="integer">298</text_reviews_count>
+  <original_publication_year type="integer">2006</original_publication_year>
+  <original_publication_month type="integer">10</original_publication_month>
+  <original_publication_day type="integer">9</original_publication_day>
+  <average_rating>3.91</average_rating>
+  <best_book type="Book">
+    <id type="integer">98897</id>
+    <title>Why We Want You To Be Rich: Two Men, One Message</title>
+    <author>
+      <id type="integer">676</id>
+      <name>Donald J. Trump</name>
+    </author>
+    <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+    <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">13781747</id>
+  <books_count type="integer">19</books_count>
+  <ratings_count type="integer">8932</ratings_count>
+  <text_reviews_count type="integer">696</text_reviews_count>
+  <original_publication_year type="integer">2010</original_publication_year>
+  <original_publication_month type="integer">11</original_publication_month>
+  <original_publication_day type="integer">8</original_publication_day>
+  <average_rating>4.37</average_rating>
+  <best_book type="Book">
+    <id type="integer">18872437</id>
+    <title>The Millionaire Fastlane: Crack the Code to Wealth and Live Rich for a Lifetime!</title>
+    <author>
+      <id type="integer">4207025</id>
+      <name>M.J. DeMarco</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1384971700l/18872437._SX98_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1384971700l/18872437._SX50_.jpg</small_image_url>
+  </best_book>
+</work>
+
+    </results>
+</search>
+
+</GoodreadsResponse>

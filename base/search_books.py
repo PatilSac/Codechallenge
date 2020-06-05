@@ -39,6 +39,8 @@ class Search:
 
     def search_by_year(self, year=None):
 
+        year = config('YEAR')
+
         if year is not None:
             response = APIUtil.get(url=config('SEARCH_BY_YEAR')+str(year))
         else:

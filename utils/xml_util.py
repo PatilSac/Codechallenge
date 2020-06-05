@@ -49,7 +49,7 @@ class XMLUtil:
         tree = et.parse(os.path.dirname(os.getcwd()) + "/ignore/" + "byyear.xml")
 
         cls.log.info('tree object created')
-        print(tree)
+        cls.log.info(tree)
 
 
 
