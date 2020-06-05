@@ -4,6 +4,7 @@ import pytest
 import requests
 import xml.etree.ElementTree as ET
 import lxml.html as html
+from decouple import config
 
 
 
@@ -22,6 +23,7 @@ def test_books_dictionary(obj_search, xml_parse):
     assert bool(xml_parse.get_book_name_byfield(text))
 
 
+
 def test_books_byyear_statustest(obj_search):
     code,text = obj_search.search_by_year()
     assert code == 200
@@ -31,28 +33,34 @@ def test_books_byyear_dictionary(obj_search, xml_parse):
     code,text = obj_search.search_by_year()
     assert bool(xml_parse.get_book_name_byyear(text))
 
+
 def test_books_dir_xpath(obj_search):
     root = ET.fromstring(obj_search.search_by_field()[1])
+    author = []
+    title = []
 
-    for node in root.findall('.//best_book/title'):
-        log.info(node.text)
+    for node in root.findall(config('XPATH_TITLE')):
+        # cls.log.info(node.text)
+        title.append(node.text)
 
-    for node in root.findall('.//best_book/author/name'):
-        log.info(node.text)
+    for node in root.findall(config('XPATH_AUTHOR')):
+        # cls.log.info(node.text)
+        author.append(node.text)
 
-    assert True
+    log.info({key: value for (key, value) in zip(author, title)})
 
 def test_books_byyear_xpath(obj_search):
-
     root = html.fromstring(obj_search.search_by_year()[1])
+    author = []
+    title = []
 
-    for node in root.xpath('.//table/tr/td/div/a'):
-        log.info(node)
+    for node in root.xpath(config('XPATH_YEAR_TITLE')):
+        title.append(node.text_content())
 
-    log.info('Done')
-    assert True
+    for node in root.xpath(config('XPATH_YEAR_AUTHOR')):
+        author.append(node.text_content())
 
-
+    log.info({key: value for (key, value) in zip(author, title)})
 
 
 
