@@ -1,5 +1,5 @@
 python-decouple
 requests
 pytest
-seleniu
+selenium
 
