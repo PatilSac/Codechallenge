@@ -1,0 +1,12 @@
+2020-06-05 11:50:46,344 - search_books - 20 - INFO - Payload created
+2020-06-05 11:50:46,346 - connectionpool - 941 - DEBUG - Starting new HTTPS connection (1): www.goodreads.com:443
+2020-06-05 11:50:49,994 - connectionpool - 442 - DEBUG - https://www.goodreads.com:443 "GET /search/index.xml?key=NT02qJcjLCaq2GgotBcIQ&q=Rich&search%5Bfield%5D=title HTTP/1.1" 200 None
+2020-06-05 11:50:49,996 - search_books - 23 - INFO - Search query hit
+2020-06-05 11:50:49,996 - search_books - 25 - INFO - 200
+2020-06-05 11:50:49,996 - search_books - 27 - INFO - values printed on console
+2020-06-05 11:50:49,996 - xml_util - 15 - INFO - in get_book method
+2020-06-05 11:50:49,997 - xml_util - 19 - INFO - xml file created
+2020-06-05 11:50:49,998 - xml_util - 23 - INFO - tree object created
+2020-06-05 11:50:49,998 - xml_util - 27 - INFO - root object created
+2020-06-05 11:50:49,998 - xml_util - 31 - INFO - Book element object created, location can be changed if xml changes
+2020-06-05 11:50:49,998 - xml_util - 35 - INFO - Created author and title list

@@ -1,14 +1,4 @@
-2020-06-05 00:43:16,837 - test_env_key - 50 - DEBUG - Harmless debug Message
-2020-06-05 00:43:16,837 - test_env_key - 51 - INFO - Just an information
-2020-06-05 00:43:16,837 - test_env_key - 52 - WARNING - Its a Warning
-2020-06-05 00:43:16,837 - test_env_key - 53 - ERROR - Did you try to divide by zero
-2020-06-05 00:43:16,837 - test_env_key - 54 - CRITICAL - Internet is down
-2020-06-05 00:43:16,905 - search_books - 20 - INFO - Payload created
-2020-06-05 00:43:16,907 - connectionpool - 941 - DEBUG - Starting new HTTPS connection (1): www.goodreads.com:443
-2020-06-05 00:43:18,220 - connectionpool - 442 - DEBUG - https://www.goodreads.com:443 "GET /search/index.xml?key=NT02qJcjLCaq2GgotBcIQ&q=Rich&search%5Bfield%5D=title HTTP/1.1" 200 None
-2020-06-05 00:43:18,226 - search_books - 23 - INFO - Search query hit
-2020-06-05 00:43:18,226 - search_books - 25 - INFO - 200
-2020-06-05 00:43:18,226 - search_books - 26 - INFO - <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <GoodreadsResponse>
   <Request>
     <authentication>true</authentication>
@@ -19,15 +9,15 @@
   <query><![CDATA[Rich]]></query>
     <results-start>1</results-start>
     <results-end>20</results-end>
-    <total-results>54373</total-results>
+    <total-results>54378</total-results>
     <source>Goodreads</source>
     <query-time-seconds>0.07</query-time-seconds>
     <results>
         <work>
   <id type="integer">3366043</id>
   <books_count type="integer">266</books_count>
-  <ratings_count type="integer">335641</ratings_count>
-  <text_reviews_count type="integer">12855</text_reviews_count>
+  <ratings_count type="integer">335749</ratings_count>
+  <text_reviews_count type="integer">12861</text_reviews_count>
   <original_publication_year type="integer">1997</original_publication_year>
   <original_publication_month type="integer" nil="true"/>
   <original_publication_day type="integer" nil="true"/>
@@ -47,8 +37,8 @@
         <work>
   <id type="integer">21571970</id>
   <books_count type="integer">107</books_count>
-  <ratings_count type="integer">308259</ratings_count>
-  <text_reviews_count type="integer">28471</text_reviews_count>
+  <ratings_count type="integer">308375</ratings_count>
+  <text_reviews_count type="integer">28479</text_reviews_count>
   <original_publication_year type="integer">2013</original_publication_year>
   <original_publication_month type="integer">6</original_publication_month>
   <original_publication_day type="integer">11</original_publication_day>
@@ -67,9 +57,9 @@
 
         <work>
   <id type="integer">1199320</id>
-  <books_count type="integer">79</books_count>
-  <ratings_count type="integer">198356</ratings_count>
-  <text_reviews_count type="integer">6196</text_reviews_count>
+  <books_count type="integer">1053</books_count>
+  <ratings_count type="integer">198403</ratings_count>
+  <text_reviews_count type="integer">6198</text_reviews_count>
   <original_publication_year type="integer">1937</original_publication_year>
   <original_publication_month type="integer" nil="true"/>
   <original_publication_day type="integer" nil="true"/>
@@ -88,9 +78,9 @@
 
         <work>
   <id type="integer">42179165</id>
-  <books_count type="integer">56</books_count>
-  <ratings_count type="integer">136604</ratings_count>
-  <text_reviews_count type="integer">10200</text_reviews_count>
+  <books_count type="integer">5</books_count>
+  <ratings_count type="integer">136663</ratings_count>
+  <text_reviews_count type="integer">10201</text_reviews_count>
   <original_publication_year type="integer">2015</original_publication_year>
   <original_publication_month type="integer">6</original_publication_month>
   <original_publication_day type="integer">16</original_publication_day>
@@ -110,8 +100,8 @@
         <work>
   <id type="integer">50231439</id>
   <books_count type="integer">36</books_count>
-  <ratings_count type="integer">107403</ratings_count>
-  <text_reviews_count type="integer">7732</text_reviews_count>
+  <ratings_count type="integer">107463</ratings_count>
+  <text_reviews_count type="integer">7736</text_reviews_count>
   <original_publication_year type="integer">2017</original_publication_year>
   <original_publication_month type="integer">5</original_publication_month>
   <original_publication_day type="integer">23</original_publication_day>
@@ -131,7 +121,7 @@
         <work>
   <id type="integer">42235</id>
   <books_count type="integer">113</books_count>
-  <ratings_count type="integer">38553</ratings_count>
+  <ratings_count type="integer">38562</ratings_count>
   <text_reviews_count type="integer">1167</text_reviews_count>
   <original_publication_year type="integer">1998</original_publication_year>
   <original_publication_month type="integer" nil="true"/>
@@ -152,7 +142,7 @@
         <work>
   <id type="integer">332860</id>
   <books_count type="integer">725</books_count>
-  <ratings_count type="integer">30246</ratings_count>
+  <ratings_count type="integer">30251</ratings_count>
   <text_reviews_count type="integer">921</text_reviews_count>
   <original_publication_year type="integer">1910</original_publication_year>
   <original_publication_month type="integer" nil="true"/>
@@ -173,7 +163,7 @@
         <work>
   <id type="integer">4990463</id>
   <books_count type="integer">10</books_count>
-  <ratings_count type="integer">22529</ratings_count>
+  <ratings_count type="integer">22540</ratings_count>
   <text_reviews_count type="integer">1852</text_reviews_count>
   <original_publication_year type="integer">2009</original_publication_year>
   <original_publication_month type="integer">1</original_publication_month>
@@ -194,7 +184,7 @@
         <work>
   <id type="integer">21541860</id>
   <books_count type="integer">52</books_count>
-  <ratings_count type="integer">17827</ratings_count>
+  <ratings_count type="integer">17828</ratings_count>
   <text_reviews_count type="integer">2292</text_reviews_count>
   <original_publication_year type="integer">2013</original_publication_year>
   <original_publication_month type="integer">3</original_publication_month>
@@ -215,7 +205,7 @@
         <work>
   <id type="integer">503099</id>
   <books_count type="integer">65</books_count>
-  <ratings_count type="integer">32830</ratings_count>
+  <ratings_count type="integer">32831</ratings_count>
   <text_reviews_count type="integer">353</text_reviews_count>
   <original_publication_year type="integer">1969</original_publication_year>
   <original_publication_month type="integer" nil="true"/>
@@ -236,7 +226,7 @@
         <work>
   <id type="integer">5265</id>
   <books_count type="integer">338</books_count>
-  <ratings_count type="integer">99619</ratings_count>
+  <ratings_count type="integer">99653</ratings_count>
   <text_reviews_count type="integer">5378</text_reviews_count>
   <original_publication_year type="integer">1926</original_publication_year>
   <original_publication_month type="integer" nil="true"/>
@@ -255,30 +245,9 @@
 </work>
 
         <work>
-  <id type="integer">52779695</id>
-  <books_count type="integer">13</books_count>
-  <ratings_count type="integer">12678</ratings_count>
-  <text_reviews_count type="integer">1530</text_reviews_count>
-  <original_publication_year type="integer">2017</original_publication_year>
-  <original_publication_month type="integer">3</original_publication_month>
-  <original_publication_day type="integer">27</original_publication_day>
-  <average_rating>4.12</average_rating>
-  <best_book type="Book">
-    <id type="integer">32145091</id>
-    <title>Dirty Filthy Rich Men (Dirty Duet, #1)</title>
-    <author>
-      <id type="integer">7056140</id>
-      <name>Laurelin Paige</name>
-    </author>
-    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1486953846l/32145091._SX98_.jpg</image_url>
-    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1486953846l/32145091._SY75_.jpg</small_image_url>
-  </best_book>
-</work>
-
-        <work>
   <id type="integer">69008734</id>
   <books_count type="integer">3</books_count>
-  <ratings_count type="integer">9623</ratings_count>
+  <ratings_count type="integer">9632</ratings_count>
   <text_reviews_count type="integer">977</text_reviews_count>
   <original_publication_year type="integer">2019</original_publication_year>
   <original_publication_month type="integer">3</original_publication_month>
@@ -297,9 +266,30 @@
 </work>
 
         <work>
+  <id type="integer">52779695</id>
+  <books_count type="integer">13</books_count>
+  <ratings_count type="integer">12681</ratings_count>
+  <text_reviews_count type="integer">1530</text_reviews_count>
+  <original_publication_year type="integer">2017</original_publication_year>
+  <original_publication_month type="integer">3</original_publication_month>
+  <original_publication_day type="integer">27</original_publication_day>
+  <average_rating>4.12</average_rating>
+  <best_book type="Book">
+    <id type="integer">32145091</id>
+    <title>Dirty Filthy Rich Men (Dirty Duet, #1)</title>
+    <author>
+      <id type="integer">7056140</id>
+      <name>Laurelin Paige</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1486953846l/32145091._SX98_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1486953846l/32145091._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
   <id type="integer">806311</id>
   <books_count type="integer">35</books_count>
-  <ratings_count type="integer">14995</ratings_count>
+  <ratings_count type="integer">14996</ratings_count>
   <text_reviews_count type="integer">770</text_reviews_count>
   <original_publication_year type="integer">2003</original_publication_year>
   <original_publication_month type="integer">12</original_publication_month>
@@ -320,7 +310,7 @@
         <work>
   <id type="integer">46817110</id>
   <books_count type="integer">13</books_count>
-  <ratings_count type="integer">8728</ratings_count>
+  <ratings_count type="integer">8730</ratings_count>
   <text_reviews_count type="integer">1014</text_reviews_count>
   <original_publication_year type="integer">2016</original_publication_year>
   <original_publication_month type="integer">6</original_publication_month>
@@ -341,7 +331,7 @@
         <work>
   <id type="integer">3101473</id>
   <books_count type="integer">57</books_count>
-  <ratings_count type="integer">15293</ratings_count>
+  <ratings_count type="integer">15294</ratings_count>
   <text_reviews_count type="integer">584</text_reviews_count>
   <original_publication_year type="integer">1981</original_publication_year>
   <original_publication_month type="integer">1</original_publication_month>
@@ -362,7 +352,7 @@
         <work>
   <id type="integer">1055295</id>
   <books_count type="integer">79</books_count>
-  <ratings_count type="integer">12630</ratings_count>
+  <ratings_count type="integer">12629</ratings_count>
   <text_reviews_count type="integer">375</text_reviews_count>
   <original_publication_year type="integer">2000</original_publication_year>
   <original_publication_month type="integer" nil="true"/>
@@ -383,7 +373,7 @@
         <work>
   <id type="integer">51187846</id>
   <books_count type="integer">5</books_count>
-  <ratings_count type="integer">7094</ratings_count>
+  <ratings_count type="integer">7105</ratings_count>
   <text_reviews_count type="integer">662</text_reviews_count>
   <original_publication_year type="integer">2016</original_publication_year>
   <original_publication_month type="integer">6</original_publication_month>
@@ -404,7 +394,7 @@
         <work>
   <id type="integer">13781747</id>
   <books_count type="integer">19</books_count>
-  <ratings_count type="integer">8929</ratings_count>
+  <ratings_count type="integer">8930</ratings_count>
   <text_reviews_count type="integer">695</text_reviews_count>
   <original_publication_year type="integer">2010</original_publication_year>
   <original_publication_month type="integer">11</original_publication_month>
@@ -425,7 +415,7 @@
         <work>
   <id type="integer">2866469</id>
   <books_count type="integer">50</books_count>
-  <ratings_count type="integer">13224</ratings_count>
+  <ratings_count type="integer">13226</ratings_count>
   <text_reviews_count type="integer">298</text_reviews_count>
   <original_publication_year type="integer">2006</original_publication_year>
   <original_publication_month type="integer">10</original_publication_month>
@@ -447,4 +437,3 @@
 </search>
 
 </GoodreadsResponse>
-2020-06-05 00:43:18,227 - search_books - 27 - INFO - values printed on console

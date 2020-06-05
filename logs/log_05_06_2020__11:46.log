@@ -1,0 +1,19 @@
+2020-06-05 11:46:49,293 - search_books - 20 - INFO - Payload created
+2020-06-05 11:46:49,295 - connectionpool - 941 - DEBUG - Starting new HTTPS connection (1): www.goodreads.com:443
+2020-06-05 11:46:59,666 - connectionpool - 442 - DEBUG - https://www.goodreads.com:443 "GET /search/index.xml?key=NT02qJcjLCaq2GgotBcIQ&q=Rich&search%5Bfield%5D=title HTTP/1.1" 200 None
+2020-06-05 11:46:59,672 - search_books - 23 - INFO - Search query hit
+2020-06-05 11:46:59,672 - search_books - 25 - INFO - 200
+2020-06-05 11:46:59,672 - search_books - 27 - INFO - values printed on console
+2020-06-05 11:46:59,673 - xml_util - 15 - INFO - in get_book method
+2020-06-05 11:46:59,673 - xml_util - 19 - INFO - xml file created
+2020-06-05 11:46:59,675 - xml_util - 23 - INFO - tree object created
+2020-06-05 11:46:59,675 - xml_util - 27 - INFO - root object created
+2020-06-05 11:46:59,675 - xml_util - 31 - INFO - Book element object created, location can be changed if xml changes
+2020-06-05 11:46:59,675 - xml_util - 35 - INFO - Created author and title list
+2020-06-05 11:46:59,675 - test_search_books - 15 - INFO - {'Robert T. Kiyosaki': "Rich Dad's Guide to Investing: What the Rich Invest in That the Poor and Middle Class Do Not!", 'Kevin Kwan': 'Rich People Problems (Crazy Rich Asians, #3)', 'Napoleon Hill': 'Think and Grow Rich', 'Wallace D. Wattles': 'The Science of Getting Rich', 'Ramit Sethi': 'I Will Teach You to Be Rich', 'Mohsin Hamid': 'How to Get Filthy Rich in Rising Asia', 'Irwin Shaw': 'Rich Man, Poor Man', 'George S. Clason': 'The Richest Man in Babylon', 'C.M. Stunich': 'Filthy Rich Boys (Rich Boys of Burberry Prep, #1)', 'Laurelin Paige': 'Dirty Filthy Rich Men (Dirty Duet, #1)', 'David Bach': 'The Automatic Millionaire: A Powerful One-Step Plan to Live and Finish Rich', 'Rumaan Alam': 'Rich and Pretty', 'John Updike': 'Rabbit Is Rich (Rabbit Angstrom, #3)', 'J.L. Collins': 'The Simple Path to Wealth: Your road map to financial independence and a rich, free life', 'M.J. DeMarco': 'The Millionaire Fastlane: Crack the Code to Wealth and Live Rich for a Lifetime!', 'Donald J. Trump': 'Why We Want You To Be Rich: Two Men, One Message'}
+2020-06-05 11:46:59,676 - xml_util - 15 - INFO - in get_book method
+2020-06-05 11:46:59,676 - xml_util - 19 - INFO - xml file created
+2020-06-05 11:46:59,678 - xml_util - 23 - INFO - tree object created
+2020-06-05 11:46:59,678 - xml_util - 27 - INFO - root object created
+2020-06-05 11:46:59,678 - xml_util - 31 - INFO - Book element object created, location can be changed if xml changes
+2020-06-05 11:46:59,678 - xml_util - 35 - INFO - Created author and title list
