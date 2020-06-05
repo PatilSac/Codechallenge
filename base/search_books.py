@@ -21,6 +21,8 @@ class Search:
             'q'             :   config('QUERY'),
             'search[field]' :   config('SEARCH_FIELD')
         }
+        """ payload creation can be separated in future """
+
         self.log.info('Payload created')
 
         response = APIUtil.get(url=config('SEARCH_URL'),params=payload)
@@ -28,16 +30,24 @@ class Search:
 
         self.log.info(response['response'])
         #self.log.info(response['text'])
-        self.log.info('values printed on console')
 
         return response['response'],response['text']
 
 
     def search_by_quote(self, q=None):
-
-
         pass
 
     def search_by_year(self, year=None):
-        pass
+
+        if year is not None:
+            response = APIUtil.get(url=config('SEARCH_BY_YEAR')+str(year))
+        else:
+            response = APIUtil.get(url=config('SEARCH_BY_YEAR'))
+
+        self.log.info(response['response'])
+        self.log.info(response['text'])
+
+        return response['response'], response['text']
+
+
 
