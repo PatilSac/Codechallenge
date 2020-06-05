@@ -28,8 +28,9 @@ class Search:
         response = APIUtil.get(url=config('SEARCH_URL'),params=payload)
         self.log.info('Search query hit')
 
-        self.log.info(response['response'])
-        #self.log.info(response['text'])
+        self.log.info('Response code is : '+str(response['response']))
+
+        self.log.info('Returning request data')
 
         return response['response'],response['text']
 
@@ -46,8 +47,9 @@ class Search:
         else:
             response = APIUtil.get(url=config('SEARCH_BY_YEAR'))
 
-        self.log.info(response['response'])
-        self.log.info(response['text'])
+        self.log.info('Response code is : '+str(response['response']))
+
+        self.log.info('Returning request data')
 
         return response['response'], response['text']
 

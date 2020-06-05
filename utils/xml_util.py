@@ -42,14 +42,19 @@ class XMLUtil:
     def get_book_name_byyear(cls, file):
 
         cls.log.info('in get_book_name_byyear method')
-        with open(os.path.dirname(os.getcwd()) + "/ignore/" + "byyear.xml", 'w+') as xml_file:
+        with open(os.path.dirname(os.getcwd()) + "/ignore/" + "byyear.html", 'w+') as xml_file:
             xml_file.write(file)
         cls.log.info('xml file created')
 
-        tree = et.parse(os.path.dirname(os.getcwd()) + "/ignore/" + "byyear.xml")
+        tree = et.parse(os.path.dirname(os.getcwd()) + "/ignore/" + "byyear.html")
 
         cls.log.info('tree object created')
-        cls.log.info(tree)
+        root = tree.getroot()
+        cls.log.info(list(root))
+
+
+
+
 
 
 

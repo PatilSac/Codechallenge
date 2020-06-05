@@ -9,14 +9,14 @@
   <query><![CDATA[Rich]]></query>
     <results-start>1</results-start>
     <results-end>20</results-end>
-    <total-results>54377</total-results>
+    <total-results>54378</total-results>
     <source>Goodreads</source>
-    <query-time-seconds>0.08</query-time-seconds>
+    <query-time-seconds>0.07</query-time-seconds>
     <results>
         <work>
   <id type="integer">3366043</id>
   <books_count type="integer">266</books_count>
-  <ratings_count type="integer">335792</ratings_count>
+  <ratings_count type="integer">335802</ratings_count>
   <text_reviews_count type="integer">12865</text_reviews_count>
   <original_publication_year type="integer">1997</original_publication_year>
   <original_publication_month type="integer" nil="true"/>
@@ -37,7 +37,7 @@
         <work>
   <id type="integer">21571970</id>
   <books_count type="integer">107</books_count>
-  <ratings_count type="integer">308392</ratings_count>
+  <ratings_count type="integer">308397</ratings_count>
   <text_reviews_count type="integer">28479</text_reviews_count>
   <original_publication_year type="integer">2013</original_publication_year>
   <original_publication_month type="integer">6</original_publication_month>
@@ -58,7 +58,7 @@
         <work>
   <id type="integer">1199320</id>
   <books_count type="integer">1053</books_count>
-  <ratings_count type="integer">198421</ratings_count>
+  <ratings_count type="integer">198427</ratings_count>
   <text_reviews_count type="integer">6199</text_reviews_count>
   <original_publication_year type="integer">1937</original_publication_year>
   <original_publication_month type="integer" nil="true"/>
@@ -79,7 +79,7 @@
         <work>
   <id type="integer">42179165</id>
   <books_count type="integer">56</books_count>
-  <ratings_count type="integer">136680</ratings_count>
+  <ratings_count type="integer">136681</ratings_count>
   <text_reviews_count type="integer">10202</text_reviews_count>
   <original_publication_year type="integer">2015</original_publication_year>
   <original_publication_month type="integer">6</original_publication_month>
@@ -100,7 +100,7 @@
         <work>
   <id type="integer">50231439</id>
   <books_count type="integer">36</books_count>
-  <ratings_count type="integer">107471</ratings_count>
+  <ratings_count type="integer">107475</ratings_count>
   <text_reviews_count type="integer">7737</text_reviews_count>
   <original_publication_year type="integer">2017</original_publication_year>
   <original_publication_month type="integer">5</original_publication_month>
@@ -224,6 +224,27 @@
 </work>
 
         <work>
+  <id type="integer">5265</id>
+  <books_count type="integer">338</books_count>
+  <ratings_count type="integer">99671</ratings_count>
+  <text_reviews_count type="integer">5379</text_reviews_count>
+  <original_publication_year type="integer">1926</original_publication_year>
+  <original_publication_month type="integer" nil="true"/>
+  <original_publication_day type="integer" nil="true"/>
+  <average_rating>4.26</average_rating>
+  <best_book type="Book">
+    <id type="integer">1052</id>
+    <title>The Richest Man in Babylon</title>
+    <author>
+      <id type="integer">688</id>
+      <name>George S. Clason</name>
+    </author>
+    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348336780l/1052._SY160_.jpg</image_url>
+    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348336780l/1052._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
   <id type="integer">69008734</id>
   <books_count type="integer">3</books_count>
   <ratings_count type="integer">9634</ratings_count>
@@ -245,30 +266,9 @@
 </work>
 
         <work>
-  <id type="integer">5265</id>
-  <books_count type="integer">338</books_count>
-  <ratings_count type="integer">99668</ratings_count>
-  <text_reviews_count type="integer">5379</text_reviews_count>
-  <original_publication_year type="integer">1926</original_publication_year>
-  <original_publication_month type="integer" nil="true"/>
-  <original_publication_day type="integer" nil="true"/>
-  <average_rating>4.26</average_rating>
-  <best_book type="Book">
-    <id type="integer">1052</id>
-    <title>The Richest Man in Babylon</title>
-    <author>
-      <id type="integer">688</id>
-      <name>George S. Clason</name>
-    </author>
-    <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348336780l/1052._SY160_.jpg</image_url>
-    <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348336780l/1052._SY75_.jpg</small_image_url>
-  </best_book>
-</work>
-
-        <work>
   <id type="integer">52779695</id>
   <books_count type="integer">13</books_count>
-  <ratings_count type="integer">12681</ratings_count>
+  <ratings_count type="integer">12682</ratings_count>
   <text_reviews_count type="integer">1530</text_reviews_count>
   <original_publication_year type="integer">2017</original_publication_year>
   <original_publication_month type="integer">3</original_publication_month>
@@ -283,27 +283,6 @@
     </author>
     <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1486953846l/32145091._SX98_.jpg</image_url>
     <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1486953846l/32145091._SY75_.jpg</small_image_url>
-  </best_book>
-</work>
-
-        <work>
-  <id type="integer">806311</id>
-  <books_count type="integer">35</books_count>
-  <ratings_count type="integer">14996</ratings_count>
-  <text_reviews_count type="integer">770</text_reviews_count>
-  <original_publication_year type="integer">2003</original_publication_year>
-  <original_publication_month type="integer">12</original_publication_month>
-  <original_publication_day type="integer">12</original_publication_day>
-  <average_rating>3.93</average_rating>
-  <best_book type="Book">
-    <id type="integer">621</id>
-    <title>The Automatic Millionaire: A Powerful One-Step Plan to Live and Finish Rich</title>
-    <author>
-      <id type="integer">398</id>
-      <name>David Bach</name>
-    </author>
-    <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
-    <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
   </best_book>
 </work>
 
@@ -325,6 +304,27 @@
     </author>
     <image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1445604790l/26890725._SX98_.jpg</image_url>
     <small_image_url>https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1445604790l/26890725._SY75_.jpg</small_image_url>
+  </best_book>
+</work>
+
+        <work>
+  <id type="integer">806311</id>
+  <books_count type="integer">35</books_count>
+  <ratings_count type="integer">14996</ratings_count>
+  <text_reviews_count type="integer">770</text_reviews_count>
+  <original_publication_year type="integer">2003</original_publication_year>
+  <original_publication_month type="integer">12</original_publication_month>
+  <original_publication_day type="integer">12</original_publication_day>
+  <average_rating>3.93</average_rating>
+  <best_book type="Book">
+    <id type="integer">621</id>
+    <title>The Automatic Millionaire: A Powerful One-Step Plan to Live and Finish Rich</title>
+    <author>
+      <id type="integer">398</id>
+      <name>David Bach</name>
+    </author>
+    <image_url>https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png</image_url>
+    <small_image_url>https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png</small_image_url>
   </best_book>
 </work>
 
