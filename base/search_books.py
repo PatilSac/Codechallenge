@@ -26,8 +26,8 @@ class Search:
 
         payload = {
             'key': config('KEY'),
-            'q': config('QUERY'),
-            'search[field]': config('SEARCH_FIELD')
+            'q': str(self.query),
+            'search[field]': str(self.field)
         }
         """ payload creation can be separated in future """
 
@@ -47,7 +47,7 @@ class Search:
 
         payload = {
             'utf8': '✓',
-            'q': config('QUOTE'),
+            'q': str(self.quote),
             'commit': 'Search'
         }
 
@@ -61,7 +61,7 @@ class Search:
 
     def search_by_year(self):
 
-        year = config('YEAR')
+        year = str(self.year)
 
         if year is not None:
             response = APIUtil.get(url=config('SEARCH_BY_YEAR') + str(year))
