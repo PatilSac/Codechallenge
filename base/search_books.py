@@ -11,6 +11,7 @@ class Search:
 
     def __init__(self):
         self.log = logging.Logger.get_instance()
+
         with open (os.path.dirname(os.getcwd())+"/input.json") as f:
             self.data = json.load(f)
 

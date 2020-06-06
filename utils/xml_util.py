@@ -16,6 +16,7 @@ class XMLUtil:
         root = ET.fromstring(file)
         author = []
         title = []
+        year = []
 
         for node in root.findall(config('XPATH_TITLE')):
             # cls.log.info(node.text)
@@ -25,7 +26,25 @@ class XMLUtil:
             # cls.log.info(node.text)
             author.append(node.text)
 
-        cls.book = {key: value for (key, value) in zip(author, title)}
+        for node in root.findall(config('XPATH_YEAR')):
+            if node.text is not None:
+                year.append(node.text)
+            else:
+                year.append("")
+
+        temp = {key: value for (key, value) in zip(author, year)}
+
+        temp2 = {key: value for (key, value) in zip(author, title)}
+
+        # print(temp.keys())
+        # print(zip(temp.values(), temp2.values()))
+        #
+        # cls.book = { i:list(j) for i in temp.keys() for j in zip(temp.values(), temp2.values())}
+
+        ds = [temp, temp2]
+
+        for k in temp.keys():
+            cls.book[k] = tuple(d[k] for d in ds)
 
         return cls.book
 

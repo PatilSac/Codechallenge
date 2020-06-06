@@ -13,12 +13,6 @@ def test_search_by_field_statustest(obj_search):
     code,text = obj_search.search_by_field()
     assert code == 200
 
-def test_books_byquote_output(obj_search,xml_parse):
-    code, text = obj_search.search_by_quote()
-    books = xml_parse.get_book_name_byquote(text)
-    assert bool(books)
-    log.info(books)
-
 def test_search_by_field_output(obj_search, xml_parse):
     code,text = obj_search.search_by_field()
     books = xml_parse.get_book_name_byfield(text)
@@ -40,6 +34,12 @@ def test_books_byyear_output(obj_search, xml_parse):
 def test_books_byquote_statustest(obj_search):
     code, text = obj_search.search_by_quote()
     assert code == 200
+
+def test_books_byquote_output(obj_search,xml_parse):
+    code, text = obj_search.search_by_quote()
+    books = xml_parse.get_book_name_byquote(text)
+    assert bool(books)
+    log.info(books)
 
 
 
