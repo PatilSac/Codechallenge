@@ -9,9 +9,9 @@ Ensure that you have Python 3.7.5
 project setup:
 
 ```
-sudo apt-get update
-sudo apt-get install docker-ce
-sudo apt-get install docker-compose
+git clone https://github.com/PatilSac/Codechallenge.git
+cd \path\to\project
+pip3 install -r requirements.txt
 ```
 
 ### Getting Started
