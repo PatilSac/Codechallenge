@@ -1,6 +1,8 @@
 # Codechallenge
 
-This is a dockerized django rest framework example. Once docker-compose is UP, there will be two services running based on own Dockerfiles sitting in the docker_compose directory. App code is in app folder. 
+This is a CodeChallenge, app.py runs and consumes input.json file updated by user in the root folder, books searched are displayed on the console. 
+Note: Output can be modified to be a json or another type of file in future.
+
 
 ## Prerequisites
 
@@ -21,32 +23,31 @@ Project structure
 ```
 Project/
 |-- app/
-|   |-- app.py
+|   |-- app.py                      ---------------------   Program execution starts from here
 |
 |-- base/
-|   |-- get_accesstoken.py
-|   |-- predefined.py
+|   |-- predefined.py               ---------------------   Startup class in this file initilizes the process
 |
 |-- logs/
-|   |-- log_07_06_2020__01:51.log
+|   |-- log_07_06_2020__01:51.log   ---------------------   unit test logs here
 |   |-- log_07_06_2020__01:59.log
 |
 |-- test/
-|   |-- conftest.py
-|   |-- test_search_books.py
+|   |-- conftest.py                 ---------------------   conftest holds pytest fixure methods for tests
+|   |-- test_search_books.py        ---------------------   unit test methods here
 |
 |-- utils/
-|   |-- logging.py
-|   |-- api_util.py
-|   |-- xml_util.py
-|   |-- input_check.py
-|   |-- output_process.py
-|   |-- search_books.py
+|   |-- logging.py                  ---------------------   singleton logging infrastructure
+|   |-- api_util.py                 ---------------------   public CRUD api methods
+|   |-- xml_util.py                 ---------------------   xml parsing methods for different input fields
+|   |-- input_check.py              ---------------------   input json file validation methods
+|   |-- output_process.py           ---------------------   output process method
+|   |-- search_books.py             ---------------------   search methods by different fields
 |
-|-- .env
-|-- input.json
-|-- report.html
-|-- requirements.txt
+|-- .env                            ---------------------   .env file with constants read by python-decouple library
+|-- input.json                      ---------------------   user enter input in json here
+|-- report.html                     ---------------------   unit test html report
+|-- requirements.txt                ---------------------   project requirements
 
 ```
 
