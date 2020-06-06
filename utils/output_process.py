@@ -4,42 +4,48 @@ import os
 from utils import search_books
 from utils.xml_util import XMLUtil
 
+
 class OP:
     __s = object
     __byfield = {}
+
 
 
     @classmethod
     def process_output(cls):
         cls.__s = search_books.Search()
 
-        with open (os.path.dirname(os.getcwd())+"/input.json") as f:
+        with open(os.path.dirname(os.getcwd()) + "/input.json") as f:
             data = json.load(f)
 
         year = data['year']
+
+
+        cls.__byfield = XMLUtil.get_book_name_byfield(cls.__s.search_by_field()[1])
+
         if year == "":
             OP.__display_output()
         else:
-            cls.__byfield = XMLUtil.get_book_name_byfield(cls.__s.search_by_field()[1])
             OP.__find_match_and_display(year)
 
-
     @classmethod
-    def __find_match_and_display(cls,year):
-        for k, v in cls.__byfield:
-            if v[0] == year:
-                print("Author name = {} published year and title = {}".format(k, ', '.join(map(str, v))))
+    def __find_match_and_display(cls, year):
 
+        if len(cls.__byfield) != 0:
+            for k, v in cls.__byfield.items():
+                if v[0] == year:
+                    print("AUTHOR NAME = \"{}\"     published year and title =     {}".format(k, ', '.join(map(str, v))))
+        else:
+            print("No Match")
 
     @classmethod
     def __display_output(cls):
-        for k,v in cls.__byfield:
-            print("Author name = {} published year and title = {}".format(k,', '.join(map(str, v))))
-
-
-
-
-
+        print(cls.__byfield)
+        if len(cls.__byfield) != 0:
+            for k, v in cls.__byfield.items():
+                print("AUTHOR NAME = \"{}\"     published year and title =     {}".format(k, ', '.join(map(str, v))))
+        else:
+            print("No Match")
 
 
     # def find_book_in_multiple_streams():
