@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test Report</title>
+    <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
+  <body onLoad="init()">
+    <script>/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+function toArray(iter) {
+    if (iter === null) {
+        return null;
+    }
+    return Array.prototype.slice.call(iter);
+}
+
+function find(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return elem.querySelector(selector);
+}
+
+function find_all(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return toArray(elem.querySelectorAll(selector));
+}
+
+function sort_column(elem) {
+    toggle_sort_states(elem);
+    var colIndex = toArray(elem.parentNode.childNodes).indexOf(elem);
+    var key;
+    if (elem.classList.contains('numeric')) {
+        key = key_num;
+    } else if (elem.classList.contains('result')) {
+        key = key_result;
+    } else {
+        key = key_alpha;
+    }
+    sort_table(elem, key(colIndex));
+}
+
+function show_all_extras() {
+    find_all('.col-result').forEach(show_extras);
+}
+
+function hide_all_extras() {
+    find_all('.col-result').forEach(hide_extras);
+}
+
+function show_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.remove("collapsed");
+    expandcollapse.classList.remove("expander");
+    expandcollapse.classList.add("collapser");
+}
+
+function hide_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.add("collapsed");
+    expandcollapse.classList.remove("collapser");
+    expandcollapse.classList.add("expander");
+}
+
+function show_filters() {
+    var filter_items = document.getElementsByClassName('filter');
+    for (var i = 0; i < filter_items.length; i++)
+        filter_items[i].hidden = false;
+}
+
+function add_collapse() {
+    // Add links for show/hide all
+    var resulttable = find('table#results-table');
+    var showhideall = document.createElement("p");
+    showhideall.innerHTML = '<a href="javascript:show_all_extras()">Show all details</a> / ' +
+                            '<a href="javascript:hide_all_extras()">Hide all details</a>';
+    resulttable.parentElement.insertBefore(showhideall, resulttable);
+
+    // Add show/hide link to each result
+    find_all('.col-result').forEach(function(elem) {
+        var collapsed = get_query_parameter('collapsed') || 'Passed';
+        var extras = elem.parentNode.nextElementSibling;
+        var expandcollapse = document.createElement("span");
+        if (extras.classList.contains("collapsed")) {
+            expandcollapse.classList.add("expander")
+        } else if (collapsed.includes(elem.innerHTML)) {
+            extras.classList.add("collapsed");
+            expandcollapse.classList.add("expander");
+        } else {
+            expandcollapse.classList.add("collapser");
+        }
+        elem.appendChild(expandcollapse);
+
+        elem.addEventListener("click", function(event) {
+            if (event.currentTarget.parentNode.nextElementSibling.classList.contains("collapsed")) {
+                show_extras(event.currentTarget);
+            } else {
+                hide_extras(event.currentTarget);
+            }
+        });
+    })
+}
+
+function get_query_parameter(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function init () {
+    reset_sort_headers();
+
+    add_collapse();
+
+    show_filters();
+
+    sort_column(find('.initial-sort'));
+
+    find_all('.sortable').forEach(function(elem) {
+        elem.addEventListener("click",
+                              function(event) {
+                                  sort_column(elem);
+                              }, false)
+    });
+
+};
+
+function sort_table(clicked, key_func) {
+    var rows = find_all('.results-table-row');
+    var reversed = !clicked.classList.contains('asc');
+    var sorted_rows = sort(rows, key_func, reversed);
+    /* Whole table is removed here because browsers acts much slower
+     * when appending existing elements.
+     */
+    var thead = document.getElementById("results-table-head");
+    document.getElementById('results-table').remove();
+    var parent = document.createElement("table");
+    parent.id = "results-table";
+    parent.appendChild(thead);
+    sorted_rows.forEach(function(elem) {
+        parent.appendChild(elem);
+    });
+    document.getElementsByTagName("BODY")[0].appendChild(parent);
+}
+
+function sort(items, key_func, reversed) {
+    var sort_array = items.map(function(item, i) {
+        return [key_func(item), i];
+    });
+
+    sort_array.sort(function(a, b) {
+        var key_a = a[0];
+        var key_b = b[0];
+
+        if (key_a == key_b) return 0;
+
+        if (reversed) {
+            return (key_a < key_b ? 1 : -1);
+        } else {
+            return (key_a > key_b ? 1 : -1);
+        }
+    });
+
+    return sort_array.map(function(item) {
+        var index = item[1];
+        return items[index];
+    });
+}
+
+function key_alpha(col_index) {
+    return function(elem) {
+        return elem.childNodes[1].childNodes[col_index].firstChild.data.toLowerCase();
+    };
+}
+
+function key_num(col_index) {
+    return function(elem) {
+        return parseFloat(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function key_result(col_index) {
+    return function(elem) {
+        var strings = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed',
+                       'Skipped', 'Passed'];
+        return strings.indexOf(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function reset_sort_headers() {
+    find_all('.sort-icon').forEach(function(elem) {
+        elem.parentNode.removeChild(elem);
+    });
+    find_all('.sortable').forEach(function(elem) {
+        var icon = document.createElement("div");
+        icon.className = "sort-icon";
+        icon.textContent = "vvv";
+        elem.insertBefore(icon, elem.firstChild);
+        elem.classList.remove("desc", "active");
+        elem.classList.add("asc", "inactive");
+    });
+}
+
+function toggle_sort_states(elem) {
+    //if active, toggle between asc and desc
+    if (elem.classList.contains('active')) {
+        elem.classList.toggle('asc');
+        elem.classList.toggle('desc');
+    }
+
+    //if inactive, reset all other functions and add ascending active
+    if (elem.classList.contains('inactive')) {
+        reset_sort_headers();
+        elem.classList.remove('inactive');
+        elem.classList.add('active');
+    }
+}
+
+function is_all_rows_hidden(value) {
+  return value.hidden == false;
+}
+
+function filter_table(elem) {
+    var outcome_att = "data-test-result";
+    var outcome = elem.getAttribute(outcome_att);
+    class_outcome = outcome + " results-table-row";
+    var outcome_rows = document.getElementsByClassName(class_outcome);
+
+    for(var i = 0; i < outcome_rows.length; i++){
+        outcome_rows[i].hidden = !elem.checked;
+    }
+
+    var rows = find_all('.results-table-row').filter(is_all_rows_hidden);
+    var all_rows_hidden = rows.length == 0 ? true : false;
+    var not_found_message = document.getElementById("not-found-message");
+    not_found_message.hidden = !all_rows_hidden;
+}
+</script>
+    <h1>report.html</h1>
+    <p>Report generated on 06-Jun-2020 at 13:24:02 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.1.1</p>
+    <h2>Environment</h2>
+    <table id="environment">
+      <tr>
+        <td>Packages</td>
+        <td>{"pluggy": "0.13.1", "py": "1.8.1", "pytest": "5.4.3"}</td></tr>
+      <tr>
+        <td>Platform</td>
+        <td>Linux-5.3.0-53-generic-x86_64-with-Ubuntu-18.04-bionic</td></tr>
+      <tr>
+        <td>Plugins</td>
+        <td>{"html": "2.1.1", "metadata": "1.9.0"}</td></tr>
+      <tr>
+        <td>Python</td>
+        <td>3.7.5</td></tr></table>
+    <h2>Summary</h2>
+    <p>6 tests ran in 14.64 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">5 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <h2>Results</h2>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable result initial-sort" col="result">Result</th>
+          <th class="sortable" col="name">Test</th>
+          <th class="sortable numeric" col="duration">Duration</th>
+          <th>Links</th></tr>
+        <tr hidden="true" id="not-found-message">
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test_search_books.py::test_books_byquote_output</td>
+          <td class="col-duration">1.23</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">obj_search = &lt;base.search_books.Search object at 0x7f9ef7f78910&gt;, xml_parse = &lt;class &#x27;utils.xml_util.XMLUtil&#x27;&gt;<br/><br/>    def test_books_byquote_output(obj_search,xml_parse):<br/>        code, text = obj_search.search_by_quote()<br/>        books = xml_parse.get_book_name_byquote(text)<br/>&gt;       assert bool(books)<br/><span class="error">E       assert False</span><br/><span class="error">E        +  where False = bool({})</span><br/><br/>test_search_books.py:19: AssertionError<br/> -------------------------------Captured log call-------------------------------- <br/>[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:941 Starting new HTTPS connection (1): www.goodreads.com:443
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:442 https://www.goodreads.com:443 &quot;GET /quotes/search?utf8=%E2%9C%93&amp;q=&amp;commit=Search HTTP/1.1&quot; 200 None
+[32mINFO    [0m root:search_books.py:56 Response code is : 200
+[32mINFO    [0m root:search_books.py:58 Returning request data<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_search_books.py::test_search_by_field_statustest</td>
+          <td class="col-duration">1.13</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[32mINFO    [0m root:search_books.py:34 Payload created
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:941 Starting new HTTPS connection (1): www.goodreads.com:443
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:442 https://www.goodreads.com:443 &quot;GET /search/index.xml?key=NT02qJcjLCaq2GgotBcIQ&amp;q=airforce&amp;search%5Bfield%5D=all HTTP/1.1&quot; 200 None
+[32mINFO    [0m root:search_books.py:37 Search query hit
+[32mINFO    [0m root:search_books.py:39 Response code is : 200
+[32mINFO    [0m root:search_books.py:41 Returning request data<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_search_books.py::test_search_by_field_output</td>
+          <td class="col-duration">1.33</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[32mINFO    [0m root:search_books.py:34 Payload created
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:941 Starting new HTTPS connection (1): www.goodreads.com:443
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:442 https://www.goodreads.com:443 &quot;GET /search/index.xml?key=NT02qJcjLCaq2GgotBcIQ&amp;q=airforce&amp;search%5Bfield%5D=all HTTP/1.1&quot; 200 None
+[32mINFO    [0m root:search_books.py:37 Search query hit
+[32mINFO    [0m root:search_books.py:39 Response code is : 200
+[32mINFO    [0m root:search_books.py:41 Returning request data
+[32mINFO    [0m root:test_search_books.py:26 {&#x27;Katherine Sharp Landdeck&#x27;: &#x27;The Women with Silver Wings: The Inspiring True Story of the Women Airforce Service Pilots of World War II&#x27;, &#x27;P. O’Connell Pearson&#x27;: &#x27;Fly Girls: The Forgotten Women Airforce Service Pilots of WWII&#x27;, &#x27;Marion Stegeman Hodgson&#x27;: &#x27;Winning My Wings: A Woman Airforce Service Pilot in World War II&#x27;, &#x27;Molly Merryman&#x27;: &#x27;Clipped Wings: The Rise and Fall of the Women Airforce Service Pilots (WASPS) of World War II&#x27;, &#x27;Marianne Verges&#x27;: &#x27;On Silver Wings: The Women Airforce Service Pilots of World War II&#x27;, &#x27;Wanda Langley&#x27;: &#x27;Flying Higher: The Women Airforce Service Pilots of World War II&#x27;, &#x27;Vera S. Williams&#x27;: &#x27;WASPs: Women Airforce Service Pilots of World War II&#x27;, &#x27;Kelly Flinn&#x27;: &#x27;Proud to Be: My Life, The Airforce, The Controversy&#x27;, &#x27;Robert D. Loomis&#x27;: &#x27;The Story of the U.S. Airforce&#x27;, &#x27;Anne Noggle&#x27;: &#x27;For God, Country, and the Thrill of It: Women Airforce Service Pilots in World War II&#x27;, &#x27;Byrd Howell Granger&#x27;: &#x27;On Final Approach: The Women Airforce Service Pilots of W.W. II&#x27;, &#x27;Ted Mattson&#x27;: &quot;Adventures of the Iditarod Airforce: True Stories about the Pilots Who Fly for Alaska&#x27;s Famous Sled Dog Race&quot;, &#x27;Emma Gee&#x27;: &#x27;WASP-Women Airforce Service Pilots&#x27;, &#x27;Herbert Molloy Mason&#x27;: &#x27;The United States Airforce&#x27;, &#x27;David Donald&#x27;: &quot;The Pocket Guide to Military Aircraft: and the World&#x27;s Airforces&quot;, &#x27;Barrett Tillman&#x27;: &#x27;Alpha Bravo Delta Guide To The U.S. Airforce&#x27;, &#x27;Chris Dunning&#x27;: &#x27;Courage Alone: The Italian Airforce 1940-1943&#x27;, &#x27;Roy Conyers Nesbit&#x27;: &quot;Britain&#x27;s Rebel Airforce: The War from the Air in Rhodesia&quot;, &#x27;Donald L. Miller&#x27;: &#x27;Eighth Airforce: The American Bomber Crews in Britain&#x27;, &#x27;Robert F. Dorr&#x27;: &#x27;Fighters of the US Airforce&#x27;}<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_search_books.py::test_books_byyear_statustest</td>
+          <td class="col-duration">5.01</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:941 Starting new HTTPS connection (1): www.goodreads.com:443
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:442 https://www.goodreads.com:443 &quot;GET /book/popular_by_date/2019 HTTP/1.1&quot; 200 None
+[32mINFO    [0m root:search_books.py:71 Response code is : 200
+[32mINFO    [0m root:search_books.py:73 Returning request data<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_search_books.py::test_books_byyear_output</td>
+          <td class="col-duration">4.42</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:941 Starting new HTTPS connection (1): www.goodreads.com:443
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:442 https://www.goodreads.com:443 &quot;GET /book/popular_by_date/2019 HTTP/1.1&quot; 200 None
+[32mINFO    [0m root:search_books.py:71 Response code is : 200
+[32mINFO    [0m root:search_books.py:73 Returning request data
+[32mINFO    [0m root:test_search_books.py:37 {&#x27;Alex Michaelides&#x27;: &#x27;The Silent Patient&#x27;, &#x27;Taylor Jenkins Reid&#x27;: &#x27;Daisy Jones &amp; The Six&#x27;, &#x27;Margaret Atwood&#x27;: &#x27;The Testaments&#x27;, &#x27;Malcolm Gladwell&#x27;: &#x27;Talking to Strangers: What We Should Know About the People We Don’t Know&#x27;, &#x27;Leigh Bardugo&#x27;: &#x27;Ninth House (Alex Stern, #1)&#x27;, &#x27;Ann Patchett&#x27;: &#x27;The Dutch House&#x27;, &#x27;Jojo Moyes&#x27;: &#x27;The Giver of Stars&#x27;, &#x27;Mary Beth Keane&#x27;: &#x27;Ask Again, Yes&#x27;, &#x27;Stephen King&#x27;: &#x27;The Institute&#x27;, &#x27;Casey McQuiston&#x27;: &#x27;Red, White &amp; Royal Blue&#x27;, &#x27;Erin Morgenstern&#x27;: &#x27;The Starless Sea&#x27;, &#x27;Kiley Reid&#x27;: &#x27;Such a Fun Age&#x27;, &#x27;Lori Gottlieb&#x27;: &#x27;Maybe You Should Talk to Someone: A Therapist, Her Therapist, and Our Lives Revealed&#x27;, &#x27;Blake Crouch&#x27;: &#x27;Recursion&#x27;, &#x27;Greer Hendricks&#x27;: &#x27;An Anonymous Girl&#x27;, &#x27;Ocean Vuong&#x27;: &quot;On Earth We&#x27;re Briefly Gorgeous&quot;, &#x27;Colson Whitehead&#x27;: &#x27;The Nickel Boys&#x27;, &#x27;Glendy Vanderah&#x27;: &#x27;Where the Forest Meets the Stars&#x27;, &#x27;Etaf Rum&#x27;: &#x27;A Woman Is No Man&#x27;, &#x27;Lisa Jewell&#x27;: &#x27;The Family Upstairs&#x27;, &#x27;Ta-Nehisi Coates&#x27;: &#x27;The Water Dancer&#x27;, &#x27;Holly Black&#x27;: &#x27;The Queen of Nothing (The Folk of the Air, #3)&#x27;, &#x27;Christina Lauren&#x27;: &#x27;The Unhoneymooners&#x27;, &#x27;Claire Lombardo&#x27;: &#x27;The Most Fun We Ever Had&#x27;, &#x27;Lisa Taddeo&#x27;: &#x27;Three Women&#x27;, &#x27;Rachel Hollis&#x27;: &#x27;Girl, Stop Apologizing: A Shame-Free Plan for Embracing and Achieving Your Goals&#x27;, &#x27;Samantha  Downing&#x27;: &#x27;My Lovely Wife&#x27;, &#x27;Alex North&#x27;: &#x27;The Whisper Man&#x27;, &#x27;Katherine Center&#x27;: &#x27;Things You Save in a Fire&#x27;, &#x27;Alix E. Harrow&#x27;: &#x27;The Ten Thousand Doors of January&#x27;, &#x27;Margaret  Rogerson&#x27;: &#x27;Sorcery of Thorns&#x27;, &#x27;Colleen Hoover&#x27;: &#x27;Regretting You&#x27;, &#x27;Amy Harmon&#x27;: &#x27;What the Wind Knows&#x27;, &#x27;Angie  Kim&#x27;: &#x27;Miracle Creek&#x27;, &#x27;Fiona Valpy&#x27;: &quot;The Dressmaker&#x27;s Gift&quot;, &#x27;Linda  Holmes&#x27;: &#x27;Evvie Drake Starts Over&#x27;, &#x27;Kelly Harms&#x27;: &#x27;The Overdue Life of Amy Byler&#x27;, &#x27;Ali Wong&#x27;: &#x27;Dear Girls: Intimate Tales, Untold Secrets, &amp; Advice for Living Your Best Life&#x27;, &#x27;Elin Hilderbrand&#x27;: &quot;Summer of &#x27;69&quot;, &#x27;Heather   Morris&#x27;: &quot;Cilka&#x27;s Journey (The Tattooist of Auschwitz, #2)&quot;, &#x27;Rory Power&#x27;: &#x27;Wilder Girls&#x27;, &#x27;Martha Hall Kelly&#x27;: &#x27;Lost Roses (Lilac Girls, #2)&#x27;, &#x27;Caroline Criado Perez&#x27;: &#x27;Invisible Women: Data Bias in a World Designed for Men&#x27;, &#x27;Lisa See&#x27;: &#x27;The Island of Sea Women&#x27;, &#x27;Melinda Gates&#x27;: &#x27;The Moment of Lift: How Empowering Women Changes the World&#x27;, &#x27;Ruth Ware&#x27;: &#x27;The Turn of the Key&#x27;, &#x27;Yangsze Choo&#x27;: &#x27;The Night Tiger&#x27;, &#x27;Tarryn Fisher&#x27;: &#x27;The Wives&#x27;, &#x27;Chanel Miller&#x27;: &#x27;Know My Name: A Memoir&#x27;, &#x27;Jia Tolentino&#x27;: &#x27;Trick Mirror: Reflections on Self-Delusion&#x27;, &#x27;Taffy Brodesser-Akner&#x27;: &#x27;Fleishman Is in Trouble&#x27;, &#x27;William Kent Krueger&#x27;: &#x27;This Tender Land&#x27;, &#x27;Kelly Rimmer&#x27;: &#x27;The Things We Cannot Say&#x27;, &#x27;Bill Bryson&#x27;: &#x27;The Body: A Guide for Occupants&#x27;, &#x27;Candice Carty-Williams&#x27;: &#x27;Queenie&#x27;, &#x27;Bruce Holsinger&#x27;: &#x27;The Gifted School&#x27;, &#x27;Christine Riccio&#x27;: &#x27;Again, but Better&#x27;, &#x27;Roshani Chokshi&#x27;: &#x27;The Gilded Wolves (The Gilded Wolves, #1)&#x27;, &#x27;Ruta Sepetys&#x27;: &#x27;The Fountains of Silence&#x27;, &#x27;Tomi Adeyemi&#x27;: &#x27;Children of Virtue and Vengeance (Legacy of Orïsha, #2)&#x27;, &#x27;Adrian McKinty&#x27;: &#x27;The Chain&#x27;, &#x27;Amie Kaufman&#x27;: &#x27;Aurora Rising (The Aurora Cycle, #1)&#x27;, &#x27;Kim Michele Richardson&#x27;: &#x27;The Book Woman of Troublesome Creek&#x27;, &#x27;Silvia Moreno-Garcia&#x27;: &#x27;Gods of Jade and Shadow&#x27;, &#x27;Jennifer Weiner&#x27;: &#x27;Mrs. Everything&#x27;, &#x27;Rainbow Rowell&#x27;: &#x27;Wayward Son (Simon Snow, #2)&#x27;, &#x27;Tracey Garvis Graves&#x27;: &#x27;The Girl He Used to Know&#x27;, &#x27;Adam Higginbotham&#x27;: &quot;Midnight in Chernobyl: The Untold Story of the World&#x27;s Greatest Nuclear Disaster&quot;, &#x27;Julia  Phillips&#x27;: &#x27;Disappearing Earth&#x27;, &#x27;Neal Shusterman&#x27;: &#x27;The Toll (Arc of a Scythe, #3)&#x27;, &#x27;Karen Thompson Walker&#x27;: &#x27;The Dreamers&#x27;, &#x27;Emily A. Duncan&#x27;: &#x27;Wicked Saints (Something Dark and Holy, #1)&#x27;, &#x27;L.J. Shen&#x27;: &#x27;Pretty Reckless (All Saints High, #1)&#x27;, &#x27;Tamsyn Muir&#x27;: &#x27;Gideon the Ninth (The Locked Tomb, #1)&#x27;, &#x27;Katharine McGee&#x27;: &#x27;American Royals (American Royals, #1)&#x27;, &#x27;Bridget Collins&#x27;: &#x27;The Binding&#x27;, &#x27;Sophie Kinsella&#x27;: &#x27;I Owe You One&#x27;, &#x27;Abbi Waxman&#x27;: &#x27;The Bookish Life of Nina Hill&#x27;, &#x27;Renée Ahdieh&#x27;: &#x27;The Beautiful (The Beautiful, #1)&#x27;, &#x27;Peter  Swanson&#x27;: &#x27;Before She Knew Him&#x27;, &#x27;Elizabeth Acevedo&#x27;: &#x27;With the Fire on High&#x27;, &#x27;Megan Miranda&#x27;: &#x27;The Last House Guest&#x27;, &#x27;Caitlin Doughty&#x27;: &#x27;Will My Cat Eat My Eyeballs? Big Questions from Tiny Mortals About Death&#x27;, &#x27;Cal Newport&#x27;: &#x27;Digital Minimalism: Choosing a Focused Life in a Noisy World&#x27;, &#x27;Karen Kilgariff&#x27;: &#x27;Stay Sexy &amp; Don’t Get Murdered: The Definitive How-To Guide&#x27;, &#x27;André Aciman&#x27;: &#x27;Find Me (Call Me By Your Name, #2)&#x27;, &#x27;David   Epstein&#x27;: &#x27;Range: Why Generalists Triumph in a Specialized World&#x27;, &#x27;Mark Manson&#x27;: &#x27;Everything is F*cked: A Book About Hope&#x27;, &#x27;Stephanie Garber&#x27;: &#x27;Finale (Caraval, #3)&#x27;, &#x27;Chandler Baker&#x27;: &#x27;Whisper Network&#x27;, &#x27;Dani Shapiro&#x27;: &#x27;Inheritance: A Memoir of Genealogy, Paternity, and Love&#x27;, &#x27;Joanne Ramos&#x27;: &#x27;The Farm&#x27;, &#x27;Marie Benedict&#x27;: &#x27;The Only Woman in the Room&#x27;, &#x27;Jenny Odell&#x27;: &#x27;How to Do Nothing: Resisting the Attention Economy&#x27;, &#x27;Jean Kwok&#x27;: &#x27;Searching for Sylvie Lee&#x27;, &#x27;Hafsah Faizal&#x27;: &#x27;We Hunt the Flame (Sands of Arawiya, #1)&#x27;, &#x27;Ted Chiang&#x27;: &#x27;Exhalation: Stories&#x27;, &#x27;Helena Hunting&#x27;: &#x27;Meet Cute&#x27;, &#x27;Elton John&#x27;: &#x27;Me&#x27;, &#x27;Sally Hepworth&#x27;: &#x27;The Mother-in-Law&#x27;, &#x27;Shari Lapena&#x27;: &#x27;Someone We Know&#x27;, &#x27;Jodi Kantor&#x27;: &#x27;She Said: Breaking the Sexual Harassment Story That Helped Ignite a Movement&#x27;, &#x27;Julianne MacLean&#x27;: &#x27;A Fire Sparkling&#x27;, &#x27;John Grisham&#x27;: &#x27;The Guardians&#x27;, &#x27;Astrid Scholte&#x27;: &#x27;Four Dead Queens&#x27;, &#x27;Amal El-Mohtar&#x27;: &#x27;This Is How You Lose the Time War&#x27;, &#x27;Kim Liggett&#x27;: &#x27;The Grace Year&#x27;, &#x27;Christina  McDonald&#x27;: &#x27;The Night Olivia Fell&#x27;, &#x27;Katherine Arden&#x27;: &#x27;The Winter of the Witch (Winternight Trilogy, #3)&#x27;, &#x27;Barry Eisler&#x27;: &#x27;The Killer Collective (John Rain, #10; Ben Treven #4; Livia Lone #2.5)&#x27;, &#x27;Sally  Thorne&#x27;: &#x27;99 Percent Mine&#x27;, &#x27;Elizabeth Lim&#x27;: &#x27;Spin the Dawn (The Blood of Stars, #1)&#x27;, &#x27;Edward Snowden&#x27;: &#x27;Permanent Record&#x27;, &quot;Barbara O&#x27;Neal&quot;: &#x27;When We Believed in Mermaids&#x27;, &#x27;Holly  Jackson&#x27;: &quot;A Good Girl&#x27;s Guide to Murder (A Good Girl&#x27;s Guide to Murder, #1)&quot;, &#x27;Abby Jimenez&#x27;: &#x27;The Friend Zone&#x27;, &#x27;Maureen Callahan&#x27;: &#x27;American Predator: The Hunt for the Most Meticulous Serial Killer of the 21st Century&#x27;, &#x27;E.L. James&#x27;: &#x27;The Mister&#x27;, &#x27;Gregg Olsen&#x27;: &#x27;Lying Next to Me&#x27;, &#x27;Cassandra Clare&#x27;: &#x27;The Red Scrolls of Magic (The Eldest Curses #1)&#x27;, &#x27;Anissa Gray&#x27;: &#x27;The Care and Feeding of Ravenously Hungry Girls&#x27;, &#x27;Lyssa Kay Adams&#x27;: &#x27;The Bromance Book Club (Bromance Book Club, #1)&#x27;, &#x27;Sarah Dessen&#x27;: &#x27;The Rest of the Story&#x27;, &#x27;Joshilyn Jackson&#x27;: &#x27;Never Have I Ever&#x27;, &#x27;Julie Berry&#x27;: &#x27;Lovely War&#x27;, &#x27;K.F. Breene&#x27;: &#x27;The Culling Trials (Shadowspell Academy, #1)&#x27;, &#x27;Jennifer  McMahon&#x27;: &#x27;The Invited&#x27;, &#x27;Esmé Weijun Wang&#x27;: &#x27;The Collected Schizophrenias: Essays&#x27;, &#x27;Tembi Locke&#x27;: &#x27;From Scratch: A Memoir of Love, Sicily, and Finding Home&#x27;, &#x27;Steven Konkoly&#x27;: &#x27;The Rescue (Ryan Decker #1)&#x27;, &#x27;Joan He&#x27;: &#x27;Descendant of the Crane&#x27;, &#x27;Karin Slaughter&#x27;: &#x27;The Last Widow (Will Trent, #9)&#x27;, &#x27;Tara Conklin&#x27;: &#x27;The Last Romantics&#x27;, &#x27;Alice Hoffman&#x27;: &#x27;The World That We Knew&#x27;, &#x27;Jen DeLuca&#x27;: &#x27;Well Met (Well Met, #1)&#x27;, &#x27;Emma Rous&#x27;: &#x27;The Au Pair&#x27;, &#x27;Janet Evanovich&#x27;: &#x27;Twisted Twenty-Six (Stephanie Plum, #26)&#x27;, &#x27;Philip Pullman&#x27;: &#x27;The Secret Commonwealth (The Book of Dust, #2)&#x27;, &#x27;Seanan McGuire&#x27;: &#x27;Middlegame&#x27;, &#x27;Kate Quinn&#x27;: &#x27;The Huntress&#x27;, &#x27;Lucinda Berry&#x27;: &#x27;The Perfect Child&#x27;, &#x27;Claire McGowan&#x27;: &#x27;What You Did&#x27;, &#x27;Hallie Rubenhold&#x27;: &quot;The Five: The Lives of Jack the Ripper&#x27;s Women&quot;, &#x27;Lisa      Gray&#x27;: &#x27;Thin Air (Jessica Shaw #1)&#x27;, &#x27;Samantha Shannon&#x27;: &#x27;The Priory of the Orange Tree&#x27;, &#x27;Camille Pagán&#x27;: &quot;I&#x27;m Fine and Neither Are You&quot;, &#x27;Isabel Allende&#x27;: &#x27;A Long Petal of the Sea&#x27;, &#x27;Harlan Coben&#x27;: &#x27;Run Away&#x27;, &#x27;Mark  Edwards&#x27;: &#x27;Here To Stay&#x27;, &#x27;Elizabeth Gilbert&#x27;: &#x27;City of Girls&#x27;, &#x27;Angie Thomas&#x27;: &#x27;On the Come Up&#x27;}<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_search_books.py::test_books_byquote_statustest</td>
+          <td class="col-duration">1.37</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:941 Starting new HTTPS connection (1): www.goodreads.com:443
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:442 https://www.goodreads.com:443 &quot;GET /quotes/search?utf8=%E2%9C%93&amp;q=&amp;commit=Search HTTP/1.1&quot; 200 None
+[32mINFO    [0m root:search_books.py:56 Response code is : 200
+[32mINFO    [0m root:search_books.py:58 Returning request data<br/></div></td></tr></tbody></table></body></html>

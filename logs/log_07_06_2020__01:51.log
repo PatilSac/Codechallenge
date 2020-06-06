@@ -1,0 +1,10 @@
+2020-06-07 01:51:24,061 - input_check - _validate_input - 11 - INFO - Checking query string provided in input JSON
+2020-06-07 01:51:24,061 - input_check - _validate_input - 17 - INFO - Checking field string provided in input JSON
+2020-06-07 01:51:24,062 - input_check - _validate_input - 23 - INFO - Checking quote provided in input JSON
+2020-06-07 01:51:24,062 - input_check - _validate_input - 27 - INFO - Checking if the year provided is less than 0
+2020-06-07 01:51:24,062 - search_books - search_by_field - 38 - INFO - Payload created
+2020-06-07 01:51:24,064 - connectionpool - _new_conn - 941 - DEBUG - Starting new HTTPS connection (1): www.goodreads.com:443
+2020-06-07 01:51:25,553 - connectionpool - _make_request - 442 - DEBUG - https://www.goodreads.com:443 "GET /search/index.xml?key=NT02qJcjLCaq2GgotBcIQ&q=airforce&search%5Bfield%5D=title HTTP/1.1" 200 None
+2020-06-07 01:51:25,559 - search_books - search_by_field - 41 - INFO - Search query hit
+2020-06-07 01:51:25,559 - search_books - search_by_field - 43 - INFO - Response code is : 200
+2020-06-07 01:51:25,559 - search_books - search_by_field - 45 - INFO - Returning request data
