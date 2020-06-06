@@ -1,25 +1,42 @@
 import json
 import os
 
-from base import search_books
+from utils import search_books
 from utils.xml_util import XMLUtil
 
 class OP:
+    __s = object
+    __byfield = {}
 
-    @staticmethod
-    def process_output():
-        s = search_books.Search()
-        byfield = XMLUtil.get_book_name_byfield(s.search_by_field()[1])
+
+    @classmethod
+    def process_output(cls):
+        cls.__s = search_books.Search()
 
         with open (os.path.dirname(os.getcwd())+"/input.json") as f:
             data = json.load(f)
 
         year = data['year']
-        OP.find_match(data,year)
+        if year == "":
+            OP.__display_output()
+        else:
+            cls.__byfield = XMLUtil.get_book_name_byfield(cls.__s.search_by_field()[1])
+            OP.__find_match_and_display(year)
 
-    @staticmethod
-    def find_match(data,year):
-        pass
+
+    @classmethod
+    def __find_match_and_display(cls,year):
+        for k, v in cls.__byfield:
+            if v[0] == year:
+                print("Author name = {} published year and title = {}".format(k, ', '.join(map(str, v))))
+
+
+    @classmethod
+    def __display_output(cls):
+        for k,v in cls.__byfield:
+            print("Author name = {} published year and title = {}".format(k,', '.join(map(str, v))))
+
+
 
 
 

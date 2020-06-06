@@ -6,16 +6,19 @@ from utils.api_util import APIUtil
 from utils.input_check import Validate
 from utils import logging
 
-
 class Search:
 
     def __init__(self):
-        self.log = logging.Logger.get_instance()
+        self.__query = ""
+        self.__field = ""
+        self.__quote = ""
+        self.__year = ""
+        self.__log = logging.Logger.get_instance()
 
         with open (os.path.dirname(os.getcwd())+"/input.json") as f:
-            self.data = json.load(f)
+            self.__data = json.load(f)
 
-        self.query, self.field, self.quote, self.year = Validate.validate_input(self.data)
+        self.__query, self.__field, self.__quote, self.__year = Validate._validate_input(self.__data)
 
 
     """
@@ -27,19 +30,19 @@ class Search:
 
         payload = {
             'key': config('KEY'),
-            'q': str(self.query),
-            'search[field]': str(self.field)
+            'q': str(self.__query),
+            'search[field]': str(self.__field)
         }
         """ payload creation can be separated in future """
 
-        self.log.info('Payload created')
+        self.__log.info('Payload created')
 
         response = APIUtil.get(url=config('SEARCH_URL'), params=payload)
-        self.log.info('Search query hit')
+        self.__log.info('Search query hit')
 
-        self.log.info('Response code is : ' + str(response['response']))
+        self.__log.info('Response code is : ' + str(response['response']))
 
-        self.log.info('Returning request data')
+        self.__log.info('Returning request data')
 
         return response['response'], response['text']
 
@@ -48,29 +51,29 @@ class Search:
 
         payload = {
             'utf8': '✓',
-            'q': str(self.quote),
+            'q': str(self.__quote),
             'commit': 'Search'
         }
 
         response = APIUtil.get(url=config('SEARCH_BY_QUOTE'), params=payload)
 
-        self.log.info('Response code is : ' + str(response['response']))
+        self.__log.info('Response code is : ' + str(response['response']))
 
-        self.log.info('Returning request data')
+        self.__log.info('Returning request data')
 
         return response['response'], response['text']
 
     def search_by_year(self):
 
-        year = str(self.year)
+        year = str(self.__year)
 
         if year is not None:
             response = APIUtil.get(url=config('SEARCH_BY_YEAR') + str(year))
         else:
             response = APIUtil.get(url=config('SEARCH_BY_YEAR'))
 
-        self.log.info('Response code is : ' + str(response['response']))
+        self.__log.info('Response code is : ' + str(response['response']))
 
-        self.log.info('Returning request data')
+        self.__log.info('Returning request data')
 
         return response['response'], response['text']

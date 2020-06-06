@@ -1,10 +1,11 @@
+from . import base_file
 
+class App(base_file):
 
-def find_book():
-    s = search_books.Search()
-    byfield = XMLUtil.get_book_name_byfield(s.search_by_field()[1])
+    def find_book(self):
+        print('Finding book for data in input.json')
+        base_file.predefined.output_process.search_books.config()
 
-    print('Finding book for data in input.json')
 
 
 
