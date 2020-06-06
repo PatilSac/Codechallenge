@@ -44,7 +44,7 @@ Project/
 |   |-- output_process.py           ---------------------   output process method
 |   |-- search_books.py             ---------------------   search methods by different fields
 |
-|-- .env                            ---------------------   .env file with constants read by python-decouple
+|-- .env                            ---------------------   .env with constants read by python-decouple
 |-- input.json                      ---------------------   user enter input in json here
 |-- report.html                     ---------------------   unit test html report
 |-- requirements.txt                ---------------------   project requirements
