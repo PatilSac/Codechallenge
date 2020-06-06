@@ -1,14 +1,17 @@
 # Codechallenge
 
 This is a CodeChallenge, app.py runs and consumes input.json file updated by user in the root folder, books searched are displayed on the console. 
-Note: Output can be modified to be a json or another type of file in future.
 
+Note: 
+- Output can be modified to be a json or another type of file in future.
+- Out of requirements of the challenge program currently searches books based on author name, book title, year only due to limitations of goodreads api limits.
+- Need to improve understanding of api methods for other challenge requirements
 
-## Prerequisites
+### Prerequisites
 
 Ensure that you have Python 3.7.*
 
-project setup:
+project setup: (replace with appropriate commands)
 
 ```
 git clone https://github.com/PatilSac/Codechallenge.git
@@ -30,7 +33,6 @@ Project/
 |
 |-- logs/
 |   |-- log_07_06_2020__01:51.log   ---------------------   unit test logs here
-|   |-- log_07_06_2020__01:59.log
 |
 |-- test/
 |   |-- conftest.py                 ---------------------   conftest holds pytest fixure methods for tests
@@ -50,39 +52,46 @@ Project/
 |-- requirements.txt                ---------------------   project requirements
 
 ```
+### Postman collection
 
-1. Ensure that you have docker, docker-compose installed
-```
-sudo apt-get update
-sudo apt-get install docker-ce
-sudo apt-get install docker-compose
-```
-2. Clone git repo
-```
-git clone https://github.com/PatilSac/django_quiz.git
-```
-3. Build the services written in docker_compose
-```
-docker-compose -f docker-compose.yml build
-```
-4. Run the services using docker_compose
-```
-docker-compose -f docker-compose.yml up
-```
+https://www.getpostman.com/collections/458423a792cd7c0cce14
 
-## Containers
+Steps:
+1. goto GET request 'auth' 
+2. get developer key from goodreads and put it in environment variables in postman
+3. ensure that key is set to {{key}} to fetch it from environment variables.
+4. update the headers as per requirement
+5. check response
 
-There are two servers. Dockerfiles for them are located at:
-django_server : docker_compose/docker/Dockerfile
-nginx_server  : docker_compose/nginx/Dockerfile
+### Program run
+
+Steps:
+1. Update proper values in input.json with the fields for the book to search
+```
+{
+  "query": "airforce",              ---------------------   test to search
+  "field": "title",                 ---------------------   type of above text, either author/title/all
+  "quote": "",                      ---------------------   quote (currently output process not setup)
+  "year": "1997"                    ---------------------   year of publish book
+}
+```
+2. Goto terminal and do following
+```
+cd /path/to/project root
+python3 app/app.py 
+```
+3. Observe output on terminal
 
 
-### Network
+### Unit test
 
-## Gunicorn
-Python Web Server Gateway Interface HTTP server, running at 0.0.0.0:8000 in the django_server container. This is something that executes Python as Python isn't the best at handling all types of requests.
+|-- test/ has uni tests.
 
-## Nginx
-Web server, reverse proxy, load balancer, mail proxy and HTTP cache combination being used here for django rest framework. It is running at port 80 in its docker container and serving Gunicorn.
+conftest.py defines pytest fixtures, which acts as pre test setup for tests in 
+other test_*.py files in the directory
 
-### CI/CD
+Steps to run: (replace with appropriate commands)
+```
+cd /path/to/test_folder
+py.test <test_class>.py --html=report.html
+```
