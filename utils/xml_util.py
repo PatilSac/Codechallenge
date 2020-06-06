@@ -47,6 +47,24 @@ class XMLUtil:
 
         return cls.book
 
+    @classmethod
+    def get_book_name_byquote(cls, file):
+
+        author = []
+        title = []
+        root = html.fromstring(file)
+
+        for node in root.xpath(config('XPATH_QUOTE_TITLE')):
+            title.append(node.text_content())
+
+        for node in root.xpath(config('XPATH_QUOTE_AUTHOR')):
+            author.append(node.text_content())
+
+        cls.book = {key: value for (key, value) in zip(author, title)}
+
+        return cls.book
+
+
 
 
 

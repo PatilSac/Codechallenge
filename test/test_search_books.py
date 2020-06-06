@@ -1,7 +1,3 @@
-import os
-
-import pytest
-import requests
 import xml.etree.ElementTree as ET
 import lxml.html as html
 from decouple import config
@@ -63,5 +59,15 @@ def test_books_byyear_xpath(obj_search):
     log.info({key: value for (key, value) in zip(author, title)})
 
 
+def test_books_byquote_xpath(obj_search):
+    root = html.fromstring(obj_search.search_by_year()[1])
+    author = []
+    title = []
 
+    for node in root.xpath(config('XPATH_YEAR_TITLE')):
+        title.append(node.text_content())
 
+    for node in root.xpath(config('XPATH_YEAR_AUTHOR')):
+        author.append(node.text_content())
+
+    log.info({key: value for (key, value) in zip(author, title)})
