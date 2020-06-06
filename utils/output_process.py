@@ -3,39 +3,44 @@ import os
 
 from utils import search_books
 from utils.xml_util import XMLUtil
+from utils import logging
 
 
 class OP:
     __s = object
     __byfield = {}
-
+    log = logging.Logger.get_instance()
 
 
     @classmethod
     def process_output(cls):
         cls.__s = search_books.Search()
 
+        cls.log.info('loading input.json')
         with open(os.path.dirname(os.getcwd()) + "/input.json") as f:
             data = json.load(f)
 
         year = data['year']
 
-
+        cls.log.info('Calling search util and xml util functions')
         cls.__byfield = XMLUtil.get_book_name_byfield(cls.__s.search_by_field()[1])
 
         if year == "":
+            cls.log.info('display results')
             OP.__display_output()
         else:
+            cls.log.info('find match to the input YEAR and display results')
             OP.__find_match_and_display(year)
 
     @classmethod
     def __find_match_and_display(cls, year):
-
+        n = 0
         if len(cls.__byfield) != 0:
             for k, v in cls.__byfield.items():
                 if v[0] == year:
+                    n += 1
                     print("AUTHOR NAME = \"{}\"     published year and title =     {}".format(k, ', '.join(map(str, v))))
-        else:
+        if n == 0:
             print("No Match")
 
     @classmethod
