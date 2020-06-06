@@ -26,7 +26,7 @@ Project/
 |   |-- app.py                      ---------------------   Program execution starts from here
 |
 |-- base/
-|   |-- predefined.py               ---------------------   Startup class in this file initilizes the process
+|   |-- predefined.py               ---------------------   Startup class file initilizes the process
 |
 |-- logs/
 |   |-- log_07_06_2020__01:51.log   ---------------------   unit test logs here
@@ -44,7 +44,7 @@ Project/
 |   |-- output_process.py           ---------------------   output process method
 |   |-- search_books.py             ---------------------   search methods by different fields
 |
-|-- .env                            ---------------------   .env file with constants read by python-decouple library
+|-- .env                            ---------------------   .env file with constants read by python-decouple
 |-- input.json                      ---------------------   user enter input in json here
 |-- report.html                     ---------------------   unit test html report
 |-- requirements.txt                ---------------------   project requirements
