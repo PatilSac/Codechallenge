@@ -4,7 +4,7 @@ This is a dockerized django rest framework example. Once docker-compose is UP, t
 
 ## Prerequisites
 
-Ensure that you have Python 3.7.5
+Ensure that you have Python 3.7.*
 
 project setup:
 
@@ -16,7 +16,39 @@ pip3 install -r requirements.txt
 
 ### Getting Started
 
-Want to run this on local linux? (find out windows alternatives for your windows machine)
+Project structure
+
+```
+Project/
+|-- app/
+|   |-- app.py
+|
+|-- base/
+|   |-- get_accesstoken.py
+|   |-- predefined.py
+|
+|-- logs/
+|   |-- log_07_06_2020__01:51.log
+|   |-- log_07_06_2020__01:59.log
+|
+|-- test/
+|   |-- conftest.py
+|   |-- test_search_books.py
+|
+|-- utils/
+|   |-- logging.py
+|   |-- api_util.py
+|   |-- xml_util.py
+|   |-- input_check.py
+|   |-- output_process.py
+|   |-- search_books.py
+|
+|-- .env
+|-- input.json
+|-- report.html
+|-- requirements.txt
+
+```
 
 1. Ensure that you have docker, docker-compose installed
 ```
