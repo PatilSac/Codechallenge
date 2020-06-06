@@ -8,6 +8,7 @@ class Validate:
             data['field']).lower() == "title" else "all"
 
         quote = (data['quote'][:50]) if len(data['quote']) > 50 else data['quote']
+        wequote = (data['quote'][:50]) if len(data['quote']) > 50 else data['quote']
 
         year = (data['year']) if data['year'] > 0 else 2020
 
