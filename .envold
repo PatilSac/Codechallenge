@@ -3,15 +3,19 @@ KEY='NT02qJcjLCaq2GgotBcIQ'
 LOGLEVEL='NOTSET'
 
 SEARCH_URL='https://www.goodreads.com/search/index.xml'
+QUERY='Rich'
+SEARCH_FIELD='title'
 XPATH_TITLE='.//best_book/title'
 XPATH_AUTHOR='.//best_book/author/name'
 
 
 SEARCH_BY_YEAR='https://www.goodreads.com/book/popular_by_date/'
+YEAR='2020'
 XPATH_YEAR_TITLE='.//tr/td[3]/a/span'
 XPATH_YEAR_AUTHOR='.//span/div/a/span'
 
 SEARCH_BY_QUOTE='https://www.goodreads.com/quotes/search'
+QUOTE='impatient'
 XPATH_QUOTE_AUTHOR='.//div/span[1]'
 XPATH_QUOTE_TITLE='.//div/span[2]'
 

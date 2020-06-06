@@ -29,7 +29,7 @@ class Logger:
             datetimecomp = datetime.now().strftime('_%d_%m_%Y__%H:%M')
 
             logging.basicConfig(filename=FILENAME+ "/log" + str(datetimecomp) + ".log",
-                                format='%(asctime)s - %(module)s - %(lineno)s - %(levelname)s - %(message)s',
+                                format='%(asctime)s - %(module)s -%(funcName)s - %(lineno)s - %(levelname)s - %(message)s',
                                 filemode='w',
 
 
