@@ -75,12 +75,15 @@ Steps:
   "year": "1997"                    ---------------------   year of publish book
 }
 ```
-2. Goto terminal and do following
+2. Update the .env file with Goodreads API KEY and LOGLEVEL if required (values already present)
+Note: rest of the .env variables are Xpaths for different DOM's used throughout the process, need not to change them
+
+3. Goto terminal and do following
 ```
 cd /path/to/project root
 python3 app/app.py 
 ```
-3. Observe output on terminal
+4. Observe output on terminal
 
 
 ### Unit test
