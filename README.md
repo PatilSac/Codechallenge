@@ -95,3 +95,4 @@ Steps to run: (replace with appropriate commands)
 cd /path/to/test_folder
 py.test <test_class>.py --html=report.html
 ```
+Observe output under |-- logs/ 
