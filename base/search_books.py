@@ -3,7 +3,7 @@ import os
 
 from decouple import config
 from utils.api_util import APIUtil
-from utils import input_check
+from utils.input_check import Validate
 from utils import logging
 
 
@@ -14,7 +14,7 @@ class Search:
         with open (os.path.dirname(os.getcwd())+"/input.json") as f:
             self.data = json.load(f)
 
-
+        self.query, self.field, self.quote, self.year = Validate.validate_input(self.data)
 
 
     """
