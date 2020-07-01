@@ -7,18 +7,19 @@ class APIUtil:
     "Main base class for Requests based scripts"
 
     @staticmethod
-    def get(url, params=None, headers=None):
+    def get(url, headers=None):
         "Util for Get request"
         if headers is None:
             headers = {}
-        xml_response = None
+        json_response = None
+        response = False
         error = {}
         try:
             response = requests.get(url=url, headers=headers, params=params)
             try:
-                xml_response = response.text
+                json_response = response.json()
             except:
-                xml_response = None
+                json_response = None
         except (HTTPError, URLError) as err:
             error = err
             if isinstance(err, HTTPError):
@@ -29,7 +30,7 @@ class APIUtil:
                 # bubble error back up after printing relevant details
                 raise err  # We raise error only when unknown errors occurs (other than HTTP error)
 
-        return {'response': response.status_code, 'text': response.text, 'xml_response': xml_response, 'error': error}
+        return {'response': response.status_code, 'text': response.text, 'json_response': json_response, 'error': error}
 
 
     @staticmethod
@@ -38,13 +39,14 @@ class APIUtil:
         if headers is None:
             headers = {}
         error = {}
-        xml_response = None
+        response = False
+        json_response = None
         try:
             response = requests.post(url, params=params, json=json, headers=headers)
             try:
-                xml_response = response.text
+                json_response = response.json()
             except:
-                xml_response = None
+                json_response = None
         except (HTTPError, URLError) as err:
             error = err
             if isinstance(err, HTTPError):
@@ -54,4 +56,58 @@ class APIUtil:
                 print(err.reason.args)
                 raise err  # We raise error only when unknown errors occurs (other than HTTP error)
 
-        return {'response': response.status_code, 'text': response.text, 'xml_response': xml_response, 'error': error}
+        return {'response': response.status_code, 'text': response.text, 'json_response': json_response, 'error': error}
+
+    @staticmethod
+    def delete(url,headers=None):
+        "Delete request"
+        response = False
+        json_response = None
+        if headers is None:
+            headers = {}
+        error = {}
+
+        try:
+            response = requests.delete(url,headers = headers)
+            try:
+                json_response = response.json()
+            except:
+                json_response = None
+
+        except (HTTPError,URLError) as err:
+            error = err
+            if isinstance(err, HTTPError):
+                error_message = err.read()
+                print("Error in DELETE request : %s %s" % (url, error_message))
+            else:
+                print(err.reason.args)
+                raise err  # We raise error only when unknown errors occurs (other than HTTP error)
+
+        return {'response': response.status_code,'text':response.text,'json_response':json_response, 'error': error}
+
+    @staticmethod
+    def put(url,json=None, headers=None):
+        "Put request"
+        error = {}
+        response = False
+        json_response = None
+
+        try:
+            response = requests.put(url,json=json,headers=headers)
+            try:
+                json_response = response.json()
+            except:
+                json_response = None
+
+        except (HTTPError, URLError) as err:
+
+            error = err
+            if isinstance(err, HTTPError):
+                error_message = err.read()
+                print("Error in PUT request : %s %s" % (url, error_message))
+            else:
+                print(err.reason.args)
+                raise err  # We raise error only when unknown errors occurs (other than HTTP error)
+
+        return {'response': response.status_code, 'text': response.text, 'json_response': json_response, 'error': error}
+
