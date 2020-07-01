@@ -7,7 +7,7 @@ class APIUtil:
     "Main base class for Requests based scripts"
 
     @staticmethod
-    def get(url, headers=None):
+    def get(url, headers=None, params=None):
         "Util for Get request"
         if headers is None:
             headers = {}

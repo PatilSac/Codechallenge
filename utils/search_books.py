@@ -15,7 +15,7 @@ class Search:
         self.__year = ""
         self.__log = logging.Logger.get_instance()
 
-        with open (os.path.dirname(os.getcwd())+"/input.json") as f:
+        with open ((os.getcwd())+"/input.json") as f:
             self.__data = json.load(f)
 
         self.__query, self.__field, self.__quote, self.__year = Validate._validate_input(self.__data)

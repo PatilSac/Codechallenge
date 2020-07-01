@@ -1,5 +1,10 @@
 import pytest
+from utils import logging
 
+@pytest.fixture(scope="session", autouse=True)
+def large_scope_fixtures():
+    log = logging.Logger.get_instance()
+    yield log
 
 @pytest.fixture
 def obj_search():
